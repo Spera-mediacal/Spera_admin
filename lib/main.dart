@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: AppColors.bgColor,
         fontFamily:'Manjari'
       ),
-      initialRoute: AppRoutes.sideNavViewPath,
+      initialRoute: AppRoutes.loginViewPath,
 
       getPages: AppRoutes.getRoutes(),
     );

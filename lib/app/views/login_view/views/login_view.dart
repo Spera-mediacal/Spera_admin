@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:spera_admin_panel/app/routes/app_roustes.dart';
 import 'package:spera_admin_panel/utils/colors.dart';
 import 'package:spera_admin_panel/utils/global_widgets/custom_button.dart';
 import 'package:spera_admin_panel/utils/global_widgets/custom_text_field.dart';
@@ -130,7 +131,7 @@ class LoginView extends StatelessWidget {
         CustomButton(
           text: 'Login',
           onTap: () {
-
+            Get.offNamed(AppRoutes.sideNavViewPath);
           },
           width: screenWidth(context) > 1200
               ? screenWidth(context) * 0.25
