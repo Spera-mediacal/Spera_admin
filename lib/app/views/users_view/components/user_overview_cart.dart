@@ -39,31 +39,20 @@ class UserOverviewCart extends StatelessWidget {
                 color: AppColors.blackColor, fontWeight: FontWeight.w400),
           ),
           const Spacer(
-            flex: 4,
+            flex: 8,
           ),
-          Row(
-            children: [
-              const CircleAvatar(
-                backgroundImage: NetworkImage(
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa-zrKvWcBozPRvgPMHEm2fAgITc48lVqzSg&s'),
-              ),
-              SizedBox(
-                width: screenHeight(context) * 0.01,
-              ),
-              SizedBox(
-                width: 140,
-                child: Text(
-                  'Steven Nullmanfwwqffwqw',
-                  style: AppTextStyles.textStyle19.copyWith(
-                      overflow: TextOverflow.ellipsis,
-                      color: AppColors.blackColor,
-                      fontWeight: FontWeight.w400),
-                ),
-              ),
-            ],
+          SizedBox(
+            width: 140,
+            child: Text(
+              'Steven Nullmanfwwqffwqw',
+              style: AppTextStyles.textStyle19.copyWith(
+                  overflow: TextOverflow.ellipsis,
+                  color: AppColors.blackColor,
+                  fontWeight: FontWeight.w400),
+            ),
           ),
           const Spacer(
-            flex: 5,
+            flex: 7,
           ),
           Text(
             address,

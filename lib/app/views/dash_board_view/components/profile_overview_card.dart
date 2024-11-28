@@ -22,11 +22,6 @@ class ProfileOverviewCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          const CircleAvatar(
-            backgroundImage: NetworkImage(
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa-zrKvWcBozPRvgPMHEm2fAgITc48lVqzSg&s'),
-          ),
-
           Text(
             'Dr Steven Null-man',
             style: AppTextStyles.textStyle19.copyWith(
