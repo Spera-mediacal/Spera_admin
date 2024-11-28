@@ -20,10 +20,13 @@ class CustomAppBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 20.0),
       child: Row(
         children: [
-          Text(
-            title,
-            style:
-                AppTextStyles.textStyle40.copyWith(fontWeight: FontWeight.bold),
+          SizedBox(
+            width: 200,
+            child: Text(
+              title,
+              style:
+                  AppTextStyles.textStyle40.copyWith(fontWeight: FontWeight.bold),
+            ),
           ),
           const Spacer(
             flex: 20,
