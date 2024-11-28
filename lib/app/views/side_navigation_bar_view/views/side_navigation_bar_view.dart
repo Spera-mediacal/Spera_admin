@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hugeicons/hugeicons.dart';
 import 'package:spera_admin_panel/utils/global_widgets/logo_widget.dart';
 import 'package:spera_admin_panel/utils/size_config.dart';
 import 'package:spera_admin_panel/utils/text_styles.dart';
@@ -106,14 +105,9 @@ class SideNavigationBarView extends StatelessWidget {
                     left: Radius.circular(20),
                   ),
                 ),
-                child: Center(
-                  child: Text(
-                    "${controller.pageTitles[controller.selectedIndex.value]} Page",
-                    style: AppTextStyles.textStyle24.copyWith(
-                      color: AppColors.whiteColor,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                child: IndexedStack(
+                  index: controller.selectedIndex.value,
+                  children: controller.pageViews, // List of page views
                 ),
               );
             }),

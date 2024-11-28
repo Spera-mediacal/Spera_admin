@@ -29,7 +29,10 @@ class CustomTextField extends StatelessWidget {
     this.obscureText = true,
     this.onToggleObscureText,
     this.width,
-    this.height, this.keyboardType, this.textInputAction, this.onFieldSubmitted,
+    this.height,
+    this.keyboardType,
+    this.textInputAction,
+    this.onFieldSubmitted,
   });
 
   @override
@@ -47,17 +50,18 @@ class CustomTextField extends StatelessWidget {
           textInputAction: textInputAction,
           onFieldSubmitted: onFieldSubmitted,
           decoration: InputDecoration(
-           // floatingLabelBehavior: FloatingLabelBehavior.always, m4 3arf eh lzmtha
+            // floatingLabelBehavior: FloatingLabelBehavior.always, m4 3arf eh lzmtha
             hintText: hintText,
             contentPadding:
                 EdgeInsets.symmetric(vertical: height ?? 16, horizontal: 12.0),
             hintStyle: AppTextStyles.textStyle19.copyWith(
               color: AppColors.whiteColor.withOpacity(0.35),
             ),
+
             prefixIcon: prefixIcon != null
                 ? Icon(
                     prefixIcon,
-                    color: AppColors.accentColor,
+                      color: AppColors.accentColor,
                   )
                 : null,
             suffixIcon: isPassword
