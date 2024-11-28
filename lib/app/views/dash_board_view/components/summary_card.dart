@@ -24,7 +24,7 @@ class SummaryCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(10),
       width: screenWidth(context) * 0.19,
-      height: screenWidth(context) * 0.11,
+      height: screenHeight(context) * 0.18,
       decoration: BoxDecoration(
         color: AppColors.accentColor,
         borderRadius: BorderRadius.circular(24),

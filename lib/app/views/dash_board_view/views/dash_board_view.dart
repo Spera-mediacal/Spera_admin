@@ -7,6 +7,7 @@ import 'package:spera_admin_panel/utils/text_styles.dart';
 import '../../../../utils/global_widgets/custom_appbar.dart';
 import '../components/profile_overview_card.dart';
 import '../components/summary_card.dart';
+import '../components/user_join_chart.dart';
 
 class DashboardView extends StatelessWidget {
   const DashboardView({super.key});
@@ -24,68 +25,64 @@ class DashboardView extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const CustomAppBar(
-              title: 'Overview',
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'Doctors',
-                  style: AppTextStyles.textStyle19,
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    'View All',
-                    style: AppTextStyles.textStyle19
-                        .copyWith(color: AppColors.accentColor),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CustomAppBar(
+                title: 'Overview',
+              ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Doctors',
+                    style: AppTextStyles.textStyle19,
                   ),
-                ),
-              ],
-            ),
-            (screenHeight(context) * 0.01).sh,
-            SizedBox(
-              height: screenHeight(context) * 0.4,
-              child: ListView.builder(
-                itemCount: 4,
-                itemBuilder: (context, index) => const ProfileOverviewCard(),
-              ), // not scrollable
-            ),
-            (screenHeight(context) * 0.02).sh,
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SummaryCard(
-                  icon: HugeIcons.strokeRoundedArrowExpand,
-                  title: 'Total User',
-                  subTitle: '25.1K',
-                  incoming: 20,
-                ),
-                SummaryCard(
-                  icon: HugeIcons.strokeRoundedArrowExpand,
-                  title: 'Total User',
-                  subTitle: '25.1K',
-                  incoming: 20,
-                ),
-                SummaryCard(
-                  icon: HugeIcons.strokeRoundedArrowExpand,
-                  title: 'Total User',
-                  subTitle: '25.1K',
-                  incoming: 20,
-                ),
-                SummaryCard(
-                  icon: HugeIcons.strokeRoundedArrowExpand,
-                  title: 'Total User',
-                  subTitle: '25.1K',
-                  incoming: 20,
-                ),
-              ],
-            )
-          ],
+
+                ],
+              ),
+              (screenHeight(context) * 0.01).sh,
+              SizedBox(
+                height: screenHeight(context) * 0.4,
+                child: ListView.builder(
+                  itemCount: 4,
+                  itemBuilder: (context, index) => const ProfileOverviewCard(),
+                ), // not scrollable
+              ),
+              (screenHeight(context) * 0.02).sh,
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SummaryCard(
+                    icon: HugeIcons.strokeRoundedArrowExpand,
+                    title: 'Total User',
+                    subTitle: '25.1K',
+                    incoming: 20,
+                  ),
+                  SummaryCard(
+                    icon: HugeIcons.strokeRoundedArrowExpand,
+                    title: 'Total User',
+                    subTitle: '25.1K',
+                    incoming: 20,
+                  ),
+                  SummaryCard(
+                    icon: HugeIcons.strokeRoundedArrowExpand,
+                    title: 'Total User',
+                    subTitle: '25.1K',
+                    incoming: 20,
+                  ),
+                  SummaryCard(
+                    icon: HugeIcons.strokeRoundedArrowExpand,
+                    title: 'Total User',
+                    subTitle: '25.1K',
+                    incoming: 20,
+                  ),
+                ],
+              ),
+              UserJoinChart()
+            ],
+          ),
         ),
       ),
     );

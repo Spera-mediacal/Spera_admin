@@ -33,7 +33,7 @@ class ProfileOverviewCard extends StatelessWidget {
                 color: AppColors.blackColor, fontWeight: FontWeight.w400),
           ),
           Text(
-            'From 1   AM',
+            'From 1AM',
             style: AppTextStyles.textStyle15.copyWith(
                 color: AppColors.blackColor, fontWeight: FontWeight.bold),
           ),

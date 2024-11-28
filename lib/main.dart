@@ -8,9 +8,9 @@ void main() {
   runApp(const MyApp());
 
   doWhenWindowReady(() {
-    const initialSize = Size(1024, 768);
+    const initialSize = Size(1024, 1000);
     appWindow.size = initialSize;
-    appWindow.minSize = Size(1400, 800);
+    appWindow.minSize = Size(1400, 900);
     appWindow.alignment = Alignment.center;
     appWindow.show();
   });
