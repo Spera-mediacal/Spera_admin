@@ -6,6 +6,7 @@ import 'package:spera_admin_panel/utils/text_styles.dart';
 
 import '../../../utils/global_widgets/custom_appbar.dart';
 import '../../../utils/global_widgets/profile_overview_card.dart';
+import 'components/summary_card.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -51,88 +52,41 @@ class HomeView extends StatelessWidget {
               height: screenHeight(context) * 0.4,
               child: ListView.builder(
                 itemCount: 4,
-                itemBuilder: (context, index) => ProfileOverviewCard(),
+                itemBuilder: (context, index) => const ProfileOverviewCard(),
               ), // not scrollable
             ),
             (screenHeight(context) * 0.02).sh,
-            SummaryCard()
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SummaryCard(
+                  icon: HugeIcons.strokeRoundedArrowExpand,
+                  title: 'Total User',
+                  subTitle: '25.1K',
+                  incoming: 20,
+                ),
+                SummaryCard(
+                  icon: HugeIcons.strokeRoundedArrowExpand,
+                  title: 'Total User',
+                  subTitle: '25.1K',
+                  incoming: 20,
+                ),
+                SummaryCard(
+                  icon: HugeIcons.strokeRoundedArrowExpand,
+                  title: 'Total User',
+                  subTitle: '25.1K',
+                  incoming: 20,
+                ),
+                SummaryCard(
+                  icon: HugeIcons.strokeRoundedArrowExpand,
+                  title: 'Total User',
+                  subTitle: '25.1K',
+                  incoming: 20,
+                ),
+              ],
+            )
           ],
         ),
-      ),
-    );
-  }
-}
-
-class SummaryCard extends StatelessWidget {
-  const SummaryCard({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      width: screenWidth(context) * 0.2,
-      height: screenWidth(context) * 0.11,
-      decoration: BoxDecoration(
-        color: AppColors.accentColor,
-        borderRadius: BorderRadius.circular(24),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Total User',
-                    style: AppTextStyles.textStyle24
-                        .copyWith(color: AppColors.blackColor),
-                  ),
-                  Text(
-                    '25.1k',
-                    style: AppTextStyles.textStyle35.copyWith(
-                        color: AppColors.blackColor,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-              const Spacer(
-                flex: 9,
-              ),
-              const Icon(
-                HugeIcons.strokeRoundedHumidity,
-                color: AppColors.blackColor,
-                size: 32,
-              ),
-              const Spacer(
-                flex: 1,
-              )
-            ],
-          ),
-          Row(
-            children: [
-              Icon(HugeIcons.strokeRoundedArrowDown01),
-              Text(
-                '+18',
-                style: AppTextStyles.textStyle19
-                    .copyWith(color: AppColors.blackColor),
-              ),
-              Spacer(),
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  'View Report',
-                  style: AppTextStyles.textStyle19.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.blackColor),
-                ),
-              )
-            ],
-          ),
-        ],
       ),
     );
   }
