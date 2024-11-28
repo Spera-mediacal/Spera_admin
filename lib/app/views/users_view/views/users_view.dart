@@ -28,7 +28,7 @@ class UsersView extends StatelessWidget {
             CustomAppBar(
               title: 'Users',
             ),
-            Text(
+            const Text(
               '5000 Users found',
               style: AppTextStyles.textStyle24,
             ),
@@ -40,39 +40,52 @@ class UsersView extends StatelessWidget {
             ),
             (screenHeight(context) * 0.04).sh,
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                const Spacer(
+                  flex: 5,
+                ),
                 Text(
                   'ID',
                   style: AppTextStyles.textStyle24
                       .copyWith(fontWeight: FontWeight.bold),
+                ),const Spacer(
+
+                  flex: 9,
                 ),
                 Text(
                   'Name',
                   style: AppTextStyles.textStyle24
                       .copyWith(fontWeight: FontWeight.bold),
                 ),
-
+                const Spacer(
+                  flex: 9,
+                ),
                 Text(
                   'Address',
                   style: AppTextStyles.textStyle24
                       .copyWith(fontWeight: FontWeight.bold),
+                ),const Spacer(
+                  flex: 8,
                 ),
                 Text(
                   'Donation',
                   style: AppTextStyles.textStyle24
                       .copyWith(fontWeight: FontWeight.bold),
+                ),const Spacer(
+                  flex: 9,
                 ),
                 Text(
                   'Points',
                   style: AppTextStyles.textStyle24
                       .copyWith(fontWeight: FontWeight.bold),
+                ),const Spacer(
+                  flex: 9,
                 ),
                 Text(
                   'Date',
                   style: AppTextStyles.textStyle24
                       .copyWith(fontWeight: FontWeight.bold),
-                ),
+                ),const Spacer(flex: 5,)
               ],
             ),
             (screenHeight(context) * 0.02).sh,

@@ -22,7 +22,6 @@ class UserOverviewCart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8),
-      padding: const EdgeInsets.symmetric(horizontal: 50),
       width: screenWidth(context),
       height: screenHeight(context) * 0.08,
       decoration: BoxDecoration(
@@ -30,13 +29,17 @@ class UserOverviewCart extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          const Spacer(
+            flex: 4,
+          ),
           Text(
             '#$id',
             style: AppTextStyles.textStyle19.copyWith(
                 color: AppColors.blackColor, fontWeight: FontWeight.w400),
-
+          ),
+          const Spacer(
+            flex: 4,
           ),
           Row(
             children: [
@@ -44,40 +47,55 @@ class UserOverviewCart extends StatelessWidget {
                 backgroundImage: NetworkImage(
                     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa-zrKvWcBozPRvgPMHEm2fAgITc48lVqzSg&s'),
               ),
-
               SizedBox(
                 width: screenHeight(context) * 0.01,
               ),
               SizedBox(
                 width: 140,
                 child: Text(
-                  'Steven Nullman',
+                  'Steven Nullmanfwwqffwqw',
                   style: AppTextStyles.textStyle19.copyWith(
-                      color: AppColors.blackColor, fontWeight: FontWeight.w400),
+                      overflow: TextOverflow.ellipsis,
+                      color: AppColors.blackColor,
+                      fontWeight: FontWeight.w400),
                 ),
               ),
             ],
           ),
-
+          const Spacer(
+            flex: 5,
+          ),
           Text(
             address,
             style: AppTextStyles.textStyle19.copyWith(
                 color: AppColors.blackColor, fontWeight: FontWeight.w400),
+          ),
+          const Spacer(
+            flex: 10,
           ),
           Text(
             '$donation points',
             style: AppTextStyles.textStyle19.copyWith(
                 color: AppColors.blackColor, fontWeight: FontWeight.bold),
           ),
+          const Spacer(
+            flex: 10,
+          ),
           Text(
             '${donation * 100} points',
             style: AppTextStyles.textStyle19.copyWith(
                 color: AppColors.blackColor, fontWeight: FontWeight.bold),
           ),
+          const Spacer(
+            flex: 9,
+          ),
           Text(
             data,
             style: AppTextStyles.textStyle15.copyWith(
                 color: AppColors.blackColor, fontWeight: FontWeight.bold),
+          ),
+          const Spacer(
+            flex: 4,
           ),
         ],
       ),
