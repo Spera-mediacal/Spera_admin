@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:spera_admin_panel/app/views/home_view/home_view.dart';
+import 'package:spera_admin_panel/app/views/users_view/views/users_view.dart';
+
+import '../views/dash_board_view/views/dash_board_view.dart';
 
 class SideNavController extends GetxController {
   final List<String> pageTitles = [
@@ -11,8 +13,8 @@ class SideNavController extends GetxController {
   ];
 
   final List<Widget> pageViews = [
-    HomeView(),
-
+    const DashboardView(),
+    const UsersView(),
   ];
 
   final List<IconData> pageIcons = [

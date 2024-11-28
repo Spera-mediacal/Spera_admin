@@ -4,12 +4,12 @@ import 'package:spera_admin_panel/utils/colors.dart';
 import 'package:spera_admin_panel/utils/size_config.dart';
 import 'package:spera_admin_panel/utils/text_styles.dart';
 
-import '../../../utils/global_widgets/custom_appbar.dart';
-import '../../../utils/global_widgets/profile_overview_card.dart';
-import 'components/summary_card.dart';
+import '../../../../utils/global_widgets/custom_appbar.dart';
+import '../components/profile_overview_card.dart';
+import '../components/summary_card.dart';
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+class DashboardView extends StatelessWidget {
+  const DashboardView({super.key});
 
   @override
   Widget build(BuildContext context) {

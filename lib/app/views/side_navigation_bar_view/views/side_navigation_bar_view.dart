@@ -107,7 +107,7 @@ class SideNavigationBarView extends StatelessWidget {
                 ),
                 child: IndexedStack(
                   index: controller.selectedIndex.value,
-                  children: controller.pageViews, // List of page views
+                  children: controller.pageViews,
                 ),
               );
             }),

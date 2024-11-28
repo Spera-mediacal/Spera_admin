@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../colors.dart';
-import '../size_config.dart';
-import '../text_styles.dart';
+import '../../../../utils/colors.dart';
+import '../../../../utils/size_config.dart';
+import '../../../../utils/text_styles.dart';
 
 class ProfileOverviewCard extends StatelessWidget {
   const ProfileOverviewCard({
@@ -26,15 +26,16 @@ class ProfileOverviewCard extends StatelessWidget {
             backgroundImage: NetworkImage(
                 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa-zrKvWcBozPRvgPMHEm2fAgITc48lVqzSg&s'),
           ),
+
           Text(
-            'Dr Steven Nullman',
+            'Dr Steven Null-man',
             style: AppTextStyles.textStyle19.copyWith(
                 color: AppColors.blackColor, fontWeight: FontWeight.w400),
           ),
           Text(
-            '9 Days per Week',
+            'Dr Steven Null man',
             style: AppTextStyles.textStyle19.copyWith(
-                fontWeight: FontWeight.bold, color: AppColors.blackColor),
+                color: AppColors.blackColor, fontWeight: FontWeight.w400),
           ),
           Text(
             'From 1   AM',
