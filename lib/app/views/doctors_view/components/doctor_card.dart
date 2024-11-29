@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:spera_admin_panel/app/model/doctor_model.dart';
 import 'package:spera_admin_panel/app/model/user_model.dart';
 
 import '../../../../utils/colors.dart';
 import '../../../../utils/size_config.dart';
 import '../../../../utils/text_styles.dart';
 
-class UserOverviewCart extends StatelessWidget {
-  const UserOverviewCart({
+class DoctorCard extends StatelessWidget {
+  const DoctorCard({
     super.key,
 
-    required this.user,
+    required this.doctor,
   });
 
-  final User user;
+  final DoctorModel doctor;
 
 
   @override
@@ -31,7 +32,7 @@ class UserOverviewCart extends StatelessWidget {
             flex: 4,
           ),
           Text(
-            '#${user.id}',
+            '#${doctor.id}',
             style: AppTextStyles.textStyle19.copyWith(
                 color: AppColors.blackColor, fontWeight: FontWeight.w400),
           ),
@@ -41,7 +42,7 @@ class UserOverviewCart extends StatelessWidget {
           SizedBox(
             width: 140,
             child: Text(
-              user.fullName,
+              doctor.name,
               style: AppTextStyles.textStyle19.copyWith(
                   overflow: TextOverflow.ellipsis,
                   color: AppColors.blackColor,
@@ -52,7 +53,7 @@ class UserOverviewCart extends StatelessWidget {
             flex: 7,
           ),
           Text(
-            user.phoneNumber,
+            doctor.phone,
             style: AppTextStyles.textStyle19.copyWith(
                 color: AppColors.blackColor, fontWeight: FontWeight.w400),
           ),
@@ -60,7 +61,7 @@ class UserOverviewCart extends StatelessWidget {
             flex: 10,
           ),
           Text(
-            user.bloodType,
+            doctor.address,
             style: AppTextStyles.textStyle19.copyWith(
                 color: AppColors.blackColor, fontWeight: FontWeight.bold),
           ),
@@ -68,7 +69,7 @@ class UserOverviewCart extends StatelessWidget {
             flex: 10,
           ),
           Text(
-            '${user.age} points',
+            doctor.specialization,
             style: AppTextStyles.textStyle19.copyWith(
                 color: AppColors.blackColor, fontWeight: FontWeight.bold),
           ),
@@ -76,7 +77,7 @@ class UserOverviewCart extends StatelessWidget {
             flex: 9,
           ),
           Text(
-            '${user.height}',
+            '${doctor.rate}',
             style: AppTextStyles.textStyle15.copyWith(
                 color: AppColors.blackColor, fontWeight: FontWeight.bold),
           ),

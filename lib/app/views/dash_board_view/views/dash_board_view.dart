@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -10,7 +11,7 @@ import '../../../../utils/global_widgets/custom_appbar.dart';
 import '../components/circular_indicators_section.dart';
 import '../components/profile_overview_card.dart';
 import '../components/summary_card.dart';
-import '../components/user_join_chart.dart';
+import '../components/wave_chart.dart';
 
 class DashboardView extends StatelessWidget {
   const DashboardView({super.key});
@@ -66,7 +67,33 @@ class DashboardView extends StatelessWidget {
                   ),
                 ],
               ),
-              const UserJoinChart()
+              const Row(
+                children: [
+                  WaveChart(
+                    title: 'User Joining',
+                    bottomData: ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu'],
+                    spots: [
+                      FlSpot(0, 6), // Saturday
+                      FlSpot(1, 4), // Sunday
+                      FlSpot(2, 8), // Monday
+                      FlSpot(3, 10), // Tuesday
+                      FlSpot(4, 2), // Wednesday
+                      FlSpot(5, 8), // Thursday
+                    ],
+                  ),WaveChart(
+                    title: 'Doctors Joining',
+                    bottomData: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June'],
+                    spots: [
+                      FlSpot(0, 2), // Saturday
+                      FlSpot(1, 4), // Sunday
+                      FlSpot(2, 6), // Monday
+                      FlSpot(3, 8), // Tuesday
+                      FlSpot(4, 2), // Wednesday
+                      FlSpot(5, 10), // Thursday
+                    ],
+                  ),
+                ],
+              )
             ],
           ),
         ),
@@ -74,4 +101,3 @@ class DashboardView extends StatelessWidget {
     );
   }
 }
-

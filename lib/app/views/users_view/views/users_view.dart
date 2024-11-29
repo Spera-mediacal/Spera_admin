@@ -97,20 +97,21 @@ class UsersView extends StatelessWidget {
             ),
             (screenHeight(context) * 0.02).sh,
             Expanded(
-                child: ListView.builder(
-              itemCount: 10,
-              itemBuilder: (context, index) => UserOverviewCart(
-                user: User(
-                  fullName: 'fullName',
-                  id: 'id',
-                  phoneNumber: 'phoneNumber',
-                  bloodType: 'bloodType',
-                  weight: 100,
-                  height: 100,
-                  age: 25,
+              child: ListView.builder(
+                itemCount: 10,
+                itemBuilder: (context, index) => UserOverviewCart(
+                  user: User(
+                    fullName: 'fullName',
+                    id: 'id',
+                    phoneNumber: 'phoneNumber',
+                    bloodType: 'bloodType',
+                    weight: 100,
+                    height: 100,
+                    age: 25,
+                  ),
                 ),
               ),
-            ))
+            ),
           ],
         ),
       ),
