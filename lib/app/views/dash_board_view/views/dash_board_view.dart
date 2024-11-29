@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:spera_admin_panel/app/views/dash_board_view/components/progress_item.dart';
 import 'package:spera_admin_panel/utils/colors.dart';
 import 'package:spera_admin_panel/utils/size_config.dart';
 import 'package:spera_admin_panel/utils/text_styles.dart';
 
 import '../../../../utils/global_widgets/custom_appbar.dart';
+import '../components/circular_indicators_section.dart';
 import '../components/profile_overview_card.dart';
 import '../components/summary_card.dart';
 import '../components/user_join_chart.dart';
@@ -30,26 +33,9 @@ class DashboardView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const CustomAppBar(
-                title: 'Overview',
+                title: 'Dashboard',
               ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Doctors',
-                    style: AppTextStyles.textStyle19,
-                  ),
-
-                ],
-              ),
-              (screenHeight(context) * 0.01).sh,
-              SizedBox(
-                height: screenHeight(context) * 0.4,
-                child: ListView.builder(
-                  itemCount: 4,
-                  itemBuilder: (context, index) => const ProfileOverviewCard(),
-                ), // not scrollable
-              ),
+              const CircularIndicatorsSection(),
               (screenHeight(context) * 0.02).sh,
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -80,7 +66,7 @@ class DashboardView extends StatelessWidget {
                   ),
                 ],
               ),
-              UserJoinChart()
+              const UserJoinChart()
             ],
           ),
         ),
@@ -88,3 +74,4 @@ class DashboardView extends StatelessWidget {
     );
   }
 }
+

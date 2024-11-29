@@ -24,7 +24,7 @@ class SummaryCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(10),
       width: screenWidth(context) * 0.19,
-      height: screenHeight(context) * 0.18,
+      height: screenHeight(context) * 0.19,
       decoration: BoxDecoration(
         color: AppColors.accentColor,
         borderRadius: BorderRadius.circular(24),
@@ -40,12 +40,12 @@ class SummaryCard extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: AppTextStyles.textStyle24
+                    style: AppTextStyles.textStyle19
                         .copyWith(color: AppColors.blackColor),
                   ),
                   Text(
                     subTitle,
-                    style: AppTextStyles.textStyle35.copyWith(
+                    style: AppTextStyles.textStyle27.copyWith(
                         color: AppColors.blackColor,
                         fontWeight: FontWeight.bold),
                   ),

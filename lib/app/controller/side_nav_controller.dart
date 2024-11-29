@@ -8,6 +8,7 @@ class SideNavController extends GetxController {
   final List<String> pageTitles = [
     "Dashboard",
     "Users",
+    "Doctors",
     "Blood",
     "Settings",
   ];
@@ -19,7 +20,8 @@ class SideNavController extends GetxController {
 
   final List<IconData> pageIcons = [
     Icons.dashboard,
-    Icons.people,
+    Icons.person,
+    Icons.people_alt,
     Icons.bloodtype,
     Icons.settings,
   ];

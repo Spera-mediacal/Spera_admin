@@ -21,11 +21,11 @@ class CustomAppBar extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(
-            width: 200,
+            width: screenWidth(context) * 0.2,
             child: Text(
               title,
-              style:
-                  AppTextStyles.textStyle40.copyWith(fontWeight: FontWeight.bold),
+              style: AppTextStyles.textStyle40
+                  .copyWith(fontWeight: FontWeight.bold),
             ),
           ),
           const Spacer(
