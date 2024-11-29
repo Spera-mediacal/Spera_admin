@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -28,13 +29,15 @@ class AddDoctorSection extends StatelessWidget {
               CircleAvatar(
                 radius: 40,
                 backgroundImage: controller.selectedImagePath.isNotEmpty
-                    ? FileImage(File(controller.selectedImagePath.value))
+                    ? (kIsWeb
+                        ? NetworkImage(controller.selectedImagePath.value)
+                        : FileImage(File(controller.selectedImagePath.value)))
                     : null,
                 child: controller.selectedImagePath.isEmpty
                     ? IconButton(
-                  icon: const Icon(Icons.camera_alt),
-                  onPressed: controller.pickImage,
-                )
+                        icon: const Icon(Icons.camera_alt),
+                        onPressed: controller.pickImage,
+                      )
                     : null,
               ),
             ],
@@ -125,8 +128,7 @@ class AddDoctorSection extends StatelessWidget {
           children: [
             Wrap(
               spacing: 8,
-              children:
-              ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'].map((day) {
+              children: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'].map((day) {
                 return Obx(() {
                   final isSelected = controller.selectedDays.contains(day);
                   return GestureDetector(
