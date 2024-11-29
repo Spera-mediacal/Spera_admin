@@ -29,7 +29,7 @@ class UsersView extends StatelessWidget {
             const CustomAppBar(
               title: 'Users',
             ),
-            const Text(
+              Text(
               '5000 Users found',
               style: AppTextStyles.textStyle24,
             ),

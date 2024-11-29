@@ -48,7 +48,7 @@ class CustomAppBar extends StatelessWidget {
           const Spacer(
             flex: 1,
           ),
-          const Text(
+            Text(
             'Steven Nullman',
             style: AppTextStyles.textStyle19,
           ),
