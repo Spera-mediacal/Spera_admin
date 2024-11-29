@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:spera_admin_panel/app/views/doctors_view/views/doctors_view.dart';
 import 'package:spera_admin_panel/app/views/users_view/views/users_view.dart';
 
+import '../views/blood_staff_view/views/blood_staff_view.dart';
 import '../views/dash_board_view/views/dash_board_view.dart';
 
 class SideNavController extends GetxController {
@@ -17,7 +18,8 @@ class SideNavController extends GetxController {
   final List<Widget> pageViews = [
     const DashboardView(),
     const UsersView(),
-     DoctorsView()
+    DoctorsView(),
+    const BloodStaffView(),
   ];
 
   final List<IconData> pageIcons = [
