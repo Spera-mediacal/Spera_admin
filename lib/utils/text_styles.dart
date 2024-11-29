@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'colors.dart';
 
 class AppTextStyles {
@@ -8,7 +7,7 @@ class AppTextStyles {
   static const TextStyle textStyle19 =
       TextStyle(fontSize: 19, color: AppColors.whiteColor);
   static   TextStyle textStyle24 =
-      TextStyle(fontSize: 24.sp, color: AppColors.whiteColor);
+      const TextStyle(fontSize: 24, color: AppColors.whiteColor);
   static const TextStyle textStyle27 =
       TextStyle(fontSize: 27.0, color: AppColors.whiteColor);
   static const TextStyle textStyle35 =

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:spera_admin_panel/utils/global_widgets/custom_appbar.dart';
 import 'package:spera_admin_panel/utils/global_widgets/glass_container.dart';
+
 import '../../../../utils/colors.dart';
 import '../../../../utils/size_config.dart';
 import '../../../../utils/text_styles.dart';
@@ -28,6 +30,7 @@ class DoctorsView extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
+            const CustomAppBar(title: 'Doctors'),
             AddDoctorSection(controller: controller),
             (screenHeight(context) * 0.02).sh,
             Obx(() {
