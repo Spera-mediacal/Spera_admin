@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:spera_admin_panel/utils/global_widgets/custom_appbar.dart';
 
 import '../../../../utils/colors.dart';
 import '../../../../utils/size_config.dart';
+import '../components/blood_record_container.dart';
 
 class BloodStaffView extends StatelessWidget {
   const BloodStaffView({super.key});
@@ -19,11 +21,43 @@ class BloodStaffView extends StatelessWidget {
           left: Radius.circular(20),
         ),
       ),
-      child:  const Column(
+      child: Column(
         children: [
-          CustomAppBar(title: 'Blood staff'),
+          const CustomAppBar(title: 'Blood staff'),
+          Row(
+            children: [
+              Expanded(
+                child: BloodRecordContainer(
+                  icon: HugeIcons.strokeRoundedEye,
+                  percent: 20,
+                  title: 'Yearly donations',
+                  value: 20,
+                ),
+              ), Expanded(
+                child: BloodRecordContainer(
+                  icon: HugeIcons.strokeRoundedEye,
+                  percent: 20,
+                  title: 'Yearly donations',
+                  value: 20,
+                ),
+              ), Expanded(
+                child: BloodRecordContainer(
+                  icon: HugeIcons.strokeRoundedEye,
+                  percent: 20,
+                  title: 'Yearly donations',
+                  value: 20,
+                ),
+              ), Expanded(
+                child: BloodRecordContainer(
+                  icon: HugeIcons.strokeRoundedEye,
+                  percent: 20,
+                  title: 'Yearly donations',
+                  value: 20,
+                ),
+              ),
+            ],
+          )
         ],
-
       ),
     );
   }
