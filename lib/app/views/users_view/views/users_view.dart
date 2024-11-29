@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spera_admin_panel/app/model/user_model.dart';
 import 'package:spera_admin_panel/app/views/users_view/components/user_overview_cart.dart';
 import 'package:spera_admin_panel/utils/text_styles.dart';
 
@@ -21,11 +22,11 @@ class UsersView extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomAppBar(
+            const CustomAppBar(
               title: 'Users',
             ),
             const Text(
@@ -48,8 +49,8 @@ class UsersView extends StatelessWidget {
                   'ID',
                   style: AppTextStyles.textStyle24
                       .copyWith(fontWeight: FontWeight.bold),
-                ),const Spacer(
-
+                ),
+                const Spacer(
                   flex: 9,
                 ),
                 Text(
@@ -61,42 +62,53 @@ class UsersView extends StatelessWidget {
                   flex: 9,
                 ),
                 Text(
-                  'Address',
+                  'Phone',
                   style: AppTextStyles.textStyle24
                       .copyWith(fontWeight: FontWeight.bold),
-                ),const Spacer(
+                ),
+                const Spacer(
                   flex: 8,
                 ),
                 Text(
-                  'Donation',
+                  'Blood',
                   style: AppTextStyles.textStyle24
                       .copyWith(fontWeight: FontWeight.bold),
-                ),const Spacer(
+                ),
+                const Spacer(
                   flex: 9,
                 ),
                 Text(
-                  'Points',
+                  'Age',
                   style: AppTextStyles.textStyle24
                       .copyWith(fontWeight: FontWeight.bold),
-                ),const Spacer(
+                ),
+                const Spacer(
                   flex: 9,
                 ),
                 Text(
-                  'Date',
+                  'Height',
                   style: AppTextStyles.textStyle24
                       .copyWith(fontWeight: FontWeight.bold),
-                ),const Spacer(flex: 5,)
+                ),
+                const Spacer(
+                  flex: 5,
+                )
               ],
             ),
             (screenHeight(context) * 0.02).sh,
             Expanded(
                 child: ListView.builder(
-                  itemCount: 10,
-              itemBuilder: (context, index) => const UserOverviewCart(
-                id: '00001',
-                address: 'Qubaa City',
-                data: '20/10/2005',
-                donation: 8,
+              itemCount: 10,
+              itemBuilder: (context, index) => UserOverviewCart(
+                user: User(
+                  fullName: 'fullName',
+                  id: 'id',
+                  phoneNumber: 'phoneNumber',
+                  bloodType: 'bloodType',
+                  weight: 100,
+                  height: 100,
+                  age: 25,
+                ),
               ),
             ))
           ],

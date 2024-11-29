@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spera_admin_panel/app/model/user_model.dart';
 
 import '../../../../utils/colors.dart';
 import '../../../../utils/size_config.dart';
@@ -7,16 +8,12 @@ import '../../../../utils/text_styles.dart';
 class UserOverviewCart extends StatelessWidget {
   const UserOverviewCart({
     super.key,
-    required this.data,
-    required this.donation,
-    required this.address,
-    required this.id,
+
+    required this.user,
   });
 
-  final String id;
-  final String data;
-  final int donation;
-  final String address;
+  final User user;
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +31,7 @@ class UserOverviewCart extends StatelessWidget {
             flex: 4,
           ),
           Text(
-            '#$id',
+            '#${user.id}',
             style: AppTextStyles.textStyle19.copyWith(
                 color: AppColors.blackColor, fontWeight: FontWeight.w400),
           ),
@@ -55,7 +52,7 @@ class UserOverviewCart extends StatelessWidget {
             flex: 7,
           ),
           Text(
-            address,
+            user.phoneNumber,
             style: AppTextStyles.textStyle19.copyWith(
                 color: AppColors.blackColor, fontWeight: FontWeight.w400),
           ),
@@ -63,7 +60,7 @@ class UserOverviewCart extends StatelessWidget {
             flex: 10,
           ),
           Text(
-            '$donation points',
+            user.bloodType,
             style: AppTextStyles.textStyle19.copyWith(
                 color: AppColors.blackColor, fontWeight: FontWeight.bold),
           ),
@@ -71,7 +68,7 @@ class UserOverviewCart extends StatelessWidget {
             flex: 10,
           ),
           Text(
-            '${donation * 100} points',
+            '${user.age} points',
             style: AppTextStyles.textStyle19.copyWith(
                 color: AppColors.blackColor, fontWeight: FontWeight.bold),
           ),
@@ -79,7 +76,7 @@ class UserOverviewCart extends StatelessWidget {
             flex: 9,
           ),
           Text(
-            data,
+            '${user.height}',
             style: AppTextStyles.textStyle15.copyWith(
                 color: AppColors.blackColor, fontWeight: FontWeight.bold),
           ),
