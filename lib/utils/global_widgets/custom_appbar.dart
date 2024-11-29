@@ -16,51 +16,54 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SizedBox(
-          width: screenWidth(context) * 0.2,
-          child: Text(
-            title,
-            style: AppTextStyles.textStyle40
-                .copyWith(fontWeight: FontWeight.bold),
+    return Padding(
+      padding:  EdgeInsets.only(bottom: screenHeight(context) * 0.03),
+      child: Row(
+        children: [
+          SizedBox(
+            width: screenWidth(context) * 0.2,
+            child: Text(
+              title,
+              style: AppTextStyles.textStyle40
+                  .copyWith(fontWeight: FontWeight.bold),
+            ),
           ),
-        ),
-        const Spacer(
-          flex: 20,
-        ),
-        CustomTextField(
-          hintText: 'Search',
-          width: screenWidth(context) * 0.3,
-        ),
-        const Spacer(flex: 6),
-        const Icon(
-          Icons.notifications,
-          color: AppColors.accentColor,
-        ),
-        const Spacer(flex: 6),
-        const CircleAvatar(
-          backgroundImage: NetworkImage(
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa-zrKvWcBozPRvgPMHEm2fAgITc48lVqzSg&s'),
-        ),
-        const Spacer(
-          flex: 1,
-        ),
-        const Text(
-          'Steven Nullman',
-          style: AppTextStyles.textStyle19,
-        ),
-        const Spacer(
-          flex: 1,
-        ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            HugeIcons.strokeRoundedArrowDown01,
+          const Spacer(
+            flex: 20,
+          ),
+          CustomTextField(
+            hintText: 'Search',
+            width: screenWidth(context) * 0.3,
+          ),
+          const Spacer(flex: 6),
+          const Icon(
+            Icons.notifications,
             color: AppColors.accentColor,
           ),
-        ),
-      ],
+          const Spacer(flex: 6),
+          const CircleAvatar(
+            backgroundImage: NetworkImage(
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa-zrKvWcBozPRvgPMHEm2fAgITc48lVqzSg&s'),
+          ),
+          const Spacer(
+            flex: 1,
+          ),
+          const Text(
+            'Steven Nullman',
+            style: AppTextStyles.textStyle19,
+          ),
+          const Spacer(
+            flex: 1,
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              HugeIcons.strokeRoundedArrowDown01,
+              color: AppColors.accentColor,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
