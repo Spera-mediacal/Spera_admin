@@ -22,99 +22,96 @@ class UsersView extends StatelessWidget {
           left: Radius.circular(20),
         ),
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const CustomAppBar(
-              title: 'Users',
-            ),
-            Text(
-              '5000 Users found',
-              style: AppTextStyles.textStyle24,
-            ),
-            (screenHeight(context) * 0.04).sh,
-            Text(
-              'All Users',
-              style: AppTextStyles.textStyle35
-                  .copyWith(fontWeight: FontWeight.bold),
-            ),
-            (screenHeight(context) * 0.04).sh,
-            Row(
-              children: [
-                const Spacer(
-                  flex: 5,
-                ),
-                Text(
-                  'ID',
-                  style: AppTextStyles.textStyle24
-                      .copyWith(fontWeight: FontWeight.bold),
-                ),
-                const Spacer(
-                  flex: 9,
-                ),
-                Text(
-                  'Name',
-                  style: AppTextStyles.textStyle24
-                      .copyWith(fontWeight: FontWeight.bold),
-                ),
-                const Spacer(
-                  flex: 9,
-                ),
-                Text(
-                  'Phone',
-                  style: AppTextStyles.textStyle24
-                      .copyWith(fontWeight: FontWeight.bold),
-                ),
-                const Spacer(
-                  flex: 8,
-                ),
-                Text(
-                  'Blood',
-                  style: AppTextStyles.textStyle24
-                      .copyWith(fontWeight: FontWeight.bold),
-                ),
-                const Spacer(
-                  flex: 9,
-                ),
-                Text(
-                  'Age',
-                  style: AppTextStyles.textStyle24
-                      .copyWith(fontWeight: FontWeight.bold),
-                ),
-                const Spacer(
-                  flex: 9,
-                ),
-                Text(
-                  'Height',
-                  style: AppTextStyles.textStyle24
-                      .copyWith(fontWeight: FontWeight.bold),
-                ),
-                const Spacer(
-                  flex: 5,
-                )
-              ],
-            ),
-            (screenHeight(context) * 0.02).sh,
-            Expanded(
-              child: ListView.builder(
-                itemCount: 10,
-                itemBuilder: (context, index) => UserOverviewCart(
-                  user: User(
-                    fullName: 'fullName',
-                    id: 'id',
-                    phoneNumber: 'phoneNumber',
-                    bloodType: 'bloodType',
-                    weight: 100,
-                    height: 100,
-                    age: 25,
-                  ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const CustomAppBar(
+            title: 'Users',
+          ),
+          Text(
+            '5000 Users found',
+            style: AppTextStyles.textStyle24,
+          ),
+          (screenHeight(context) * 0.04).sh,
+          Text(
+            'All Users',
+            style: AppTextStyles.textStyle35
+                .copyWith(fontWeight: FontWeight.bold),
+          ),
+          (screenHeight(context) * 0.04).sh,
+          Row(
+            children: [
+              const Spacer(
+                flex: 5,
+              ),
+              Text(
+                'ID',
+                style: AppTextStyles.textStyle24
+                    .copyWith(fontWeight: FontWeight.bold),
+              ),
+              const Spacer(
+                flex: 9,
+              ),
+              Text(
+                'Name',
+                style: AppTextStyles.textStyle24
+                    .copyWith(fontWeight: FontWeight.bold),
+              ),
+              const Spacer(
+                flex: 9,
+              ),
+              Text(
+                'Phone',
+                style: AppTextStyles.textStyle24
+                    .copyWith(fontWeight: FontWeight.bold),
+              ),
+              const Spacer(
+                flex: 8,
+              ),
+              Text(
+                'Blood',
+                style: AppTextStyles.textStyle24
+                    .copyWith(fontWeight: FontWeight.bold),
+              ),
+              const Spacer(
+                flex: 9,
+              ),
+              Text(
+                'Age',
+                style: AppTextStyles.textStyle24
+                    .copyWith(fontWeight: FontWeight.bold),
+              ),
+              const Spacer(
+                flex: 9,
+              ),
+              Text(
+                'Height',
+                style: AppTextStyles.textStyle24
+                    .copyWith(fontWeight: FontWeight.bold),
+              ),
+              const Spacer(
+                flex: 5,
+              )
+            ],
+          ),
+          (screenHeight(context) * 0.02).sh,
+          Expanded(
+            child: ListView.builder(
+              itemCount: 10,
+              itemBuilder: (context, index) => UserOverviewCart(
+                user: User(
+                  fullName: 'fullName',
+                  id: 'id',
+                  phoneNumber: 'phoneNumber',
+                  bloodType: 'bloodType',
+                  weight: 100,
+                  height: 100,
+                  age: 25,
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
