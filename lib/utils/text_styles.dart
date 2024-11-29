@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'colors.dart';
 
 class AppTextStyles {
   static const TextStyle textStyle15 =

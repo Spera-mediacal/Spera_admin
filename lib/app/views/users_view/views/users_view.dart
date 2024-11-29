@@ -15,6 +15,7 @@ class UsersView extends StatelessWidget {
     return Container(
       width: screenWidth(context),
       height: screenHeight(context),
+      padding: const EdgeInsets.all(15),
       decoration: const BoxDecoration(
         color: AppColors.blackColor,
         borderRadius: BorderRadius.horizontal(
@@ -29,7 +30,7 @@ class UsersView extends StatelessWidget {
             const CustomAppBar(
               title: 'Users',
             ),
-            const Text(
+            Text(
               '5000 Users found',
               style: AppTextStyles.textStyle24,
             ),
