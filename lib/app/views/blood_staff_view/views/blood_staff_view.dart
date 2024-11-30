@@ -29,128 +29,130 @@ class BloodStaffView extends StatelessWidget {
           left: Radius.circular(20),
         ),
       ),
-      child: Column(
-        children: [
-          const CustomAppBar(title: 'Blood staff'),
-          const Row(
-            children: [
-              Expanded(
-                child: BloodRecordContainer(
-                  icon: HugeIcons.strokeRoundedEye,
-                  percent: 20,
-                  title: 'Yearly donations',
-                  value: 20,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+             CustomAppBar(title: 'bloodStaff'.tr),
+             Row(
+              children: [
+                Expanded(
+                  child: BloodRecordContainer(
+                    icon: HugeIcons.strokeRoundedEye,
+                    percent: 20,
+                    title: 'yearlyDonations'.tr,
+                    value: 20,
+                  ),
                 ),
-              ),
-              Expanded(
-                child: BloodRecordContainer(
-                  icon: HugeIcons.strokeRoundedEye,
-                  percent: 20,
-                  title: 'Yearly donations',
-                  value: 20,
+                Expanded(
+                  child: BloodRecordContainer(
+                    icon: HugeIcons.strokeRoundedEye,
+                    percent: 20,
+                    title: 'monthlyDonations'.tr,
+                    value: 20,
+                  ),
                 ),
-              ),
-              Expanded(
-                child: BloodRecordContainer(
-                  icon: HugeIcons.strokeRoundedEye,
-                  percent: 20,
-                  title: 'Yearly donations',
-                  value: 20,
+                Expanded(
+                  child: BloodRecordContainer(
+                    icon: HugeIcons.strokeRoundedEye,
+                    percent: 20,
+                    title: 'weeklyDonations'.tr,
+                    value: 20,
+                  ),
                 ),
-              ),
-              Expanded(
-                child: BloodRecordContainer(
-                  icon: HugeIcons.strokeRoundedEye,
-                  percent: 20,
-                  title: 'Yearly donations',
-                  value: 20,
+                Expanded(
+                  child: BloodRecordContainer(
+                    icon: HugeIcons.strokeRoundedEye,
+                    percent: 20,
+                    title: 'dailyDonations'.tr,
+                    value: 20,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          (screenHeight(context) * 0.02).sh,
-          Row(
-            children: [
-              SizedBox(
-                height: screenHeight(context) * 0.6,
-                width: screenWidth(context) * 0.45,
-                child: const BloodLinesChart(),
-              ),
-              const Spacer(),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Obx(
-                    () {
-                      if (controller.qrData.value == '') {
-                        return const Icon(
-                          HugeIcons.strokeRoundedQrCode,
-                          size: 210,
-                          color: AppColors.accentColor,
-                        );
-                      } else {
-                        return Container(
-                          alignment: Alignment.center,
-                          height: screenHeight(context) * 0.18,
-                          width: screenWidth(context) * 0.18,
-                          child: PrettyQrView.data(
-                            data: controller.qrData.value,
-                            errorCorrectLevel: QrErrorCorrectLevel.H,
-                            decoration: const PrettyQrDecoration(
-                              shape: PrettyQrRoundedSymbol(
-                                  color: AppColors.accentColor,
-                                  borderRadius: BorderRadius.all(Radius.zero)),
-                              background: AppColors.blackColor,
-                              image: PrettyQrDecorationImage(
-                                image: AssetImage('assets/media/logo.png'),
+              ],
+            ),
+            (screenHeight(context) * 0.02).sh,
+            Row(
+              children: [
+                SizedBox(
+                  height: screenHeight(context) * 0.6,
+                  width: screenWidth(context) * 0.45,
+                  child: const BloodLinesChart(),
+                ),
+                const Spacer(),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Obx(
+                      () {
+                        if (controller.qrData.value == '') {
+                          return const Icon(
+                            HugeIcons.strokeRoundedQrCode,
+                            size: 210,
+                            color: AppColors.accentColor,
+                          );
+                        } else {
+                          return Container(
+                            alignment: Alignment.center,
+                            height: screenHeight(context) * 0.18,
+                            width: screenWidth(context) * 0.18,
+                            child: PrettyQrView.data(
+                              data: controller.qrData.value,
+                              errorCorrectLevel: QrErrorCorrectLevel.H,
+                              decoration: const PrettyQrDecoration(
+                                shape: PrettyQrRoundedSymbol(
+                                    color: AppColors.accentColor,
+                                    borderRadius: BorderRadius.all(Radius.zero)),
+                                background: AppColors.blackColor,
+                                image: PrettyQrDecorationImage(
+                                  image: AssetImage('assets/media/logo.png'),
+                                ),
                               ),
                             ),
-                          ),
-                        );
-                      }
-                    },
-                  ),
-                  (screenHeight(context) * 0.02).sh,
-                  CustomTextField(
-                    hintText: 'Station Address',
-                    height: screenHeight(context) * 0.02,
-                    width: screenWidth(context) * 0.2,
-                    controller: controller.stationAddress,
-                  ),
-                  CustomTextField(
-                    hintText: 'Examiner Name',
-                    height: screenHeight(context) * 0.02,
-                    width: screenWidth(context) * 0.2,
-                    controller: controller.examinerName,
-                  ),
-                  CustomTextField(
-                    hintText: 'Quantity',
-                    height: screenHeight(context) * 0.02,
-                    width: screenWidth(context) * 0.2,
-                    controller: controller.quantity,
-                  ),
-                  CustomTextField(
-                    hintText: 'Blood Type',
-                    height: screenHeight(context) * 0.02,
-                    width: screenWidth(context) * 0.2,
-                    controller: controller.bloodType,
-                  ),
-                  (screenHeight(context) * 0.02).sh,
-                  CustomButton(
-                    text: 'Generate',
-                    onTap: () {
-                      controller.generateQRCode();
-                    },
-                    width: screenWidth(context) * 0.2,
-                    height: screenHeight(context) * 0.06,
-                    borderRadius: 12,
-                  ),
-                ],
-              ),
-              const Spacer(),
-            ],
-          ),
-        ],
+                          );
+                        }
+                      },
+                    ),
+                    (screenHeight(context) * 0.02).sh,
+                    CustomTextField(
+                      hintText: 'stationAddress'.tr,
+                      height: screenHeight(context) * 0.02,
+                      width: screenWidth(context) * 0.2,
+                      controller: controller.stationAddress,
+                    ),
+                    CustomTextField(
+                      hintText: 'examinerName'.tr,
+                      height: screenHeight(context) * 0.02,
+                      width: screenWidth(context) * 0.2,
+                      controller: controller.examinerName,
+                    ),
+                    CustomTextField(
+                      hintText: 'quantity'.tr,
+                      height: screenHeight(context) * 0.02,
+                      width: screenWidth(context) * 0.2,
+                      controller: controller.quantity,
+                    ),
+                    CustomTextField(
+                      hintText: 'bloodType'.tr,
+                      height: screenHeight(context) * 0.02,
+                      width: screenWidth(context) * 0.2,
+                      controller: controller.bloodType,
+                    ),
+                    (screenHeight(context) * 0.02).sh,
+                    CustomButton(
+                      text: 'generate'.tr,
+                      onTap: () {
+                        controller.generateQRCode();
+                      },
+                      width: screenWidth(context) * 0.2,
+                      height: screenHeight(context) * 0.06,
+                      borderRadius: 12,
+                    ),
+                  ],
+                ),
+                const Spacer(),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_common/get_reset.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 import '../../../../utils/colors.dart';
@@ -76,7 +78,7 @@ class SummaryCard extends StatelessWidget {
               TextButton(
                 onPressed: () {},
                 child: Text(
-                  'View Report',
+                  'viewReport'.tr,
                   style: AppTextStyles.textStyle19.copyWith(
                       fontWeight: FontWeight.bold, color: AppColors.blackColor),
                 ),

@@ -1,5 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_common/get_reset.dart';
 
 import '../../../../utils/colors.dart';
 import '../../../../utils/size_config.dart';
@@ -66,13 +68,13 @@ class BloodTypeBarChartState extends State<BloodTypeBarChart> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Text(
-                'Yearly',
+                'yearly'.tr,
                 style: AppTextStyles.textStyle35
                     .copyWith(color: AppColors.accentColor),
               ),
               (screenHeight(context) * 0.01).sh,
               Text(
-                'Blood Type Distribution',
+                'bloodTypeDistribution'.tr,
                 style: AppTextStyles.textStyle35
                     .copyWith(color: AppColors.accentColor),
               ),

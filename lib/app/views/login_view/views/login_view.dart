@@ -63,7 +63,7 @@ class LoginView extends StatelessWidget {
                     TextButton(
                       onPressed: () => controller.isLogin.value = true,
                       child: Text(
-                        'Login',
+                        'login'.tr,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -76,7 +76,7 @@ class LoginView extends StatelessWidget {
                     TextButton(
                       onPressed: () => controller.isLogin.value = false,
                       child: Text(
-                        'Register',
+                        'register'.tr,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -110,7 +110,7 @@ class LoginView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         CustomTextField(
-          hintText: 'Username',
+          hintText: 'username'.tr,
           prefixIcon: HugeIcons.strokeRoundedUser,
           width: screenWidth(context) > 1200
               ? screenWidth(context) * 0.25
@@ -118,7 +118,7 @@ class LoginView extends StatelessWidget {
           controller: controller.usernameController,
         ),
         CustomTextField(
-          hintText: 'Password',
+          hintText: 'password'.tr,
           prefixIcon: HugeIcons.strokeRoundedLockComputer,
           isPassword: true,
           obscureText: true,
@@ -129,7 +129,7 @@ class LoginView extends StatelessWidget {
         ),
         (screenHeight(context) * 0.04).sh,
         CustomButton(
-          text: 'Login',
+          text: 'login'.tr,
           onTap: () {
             Get.offNamed(AppRoutes.sideNavViewPath);
           },
@@ -147,7 +147,7 @@ class LoginView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         CustomTextField(
-          hintText: 'Full Name',
+          hintText: 'fullName'.tr,
           prefixIcon: HugeIcons.strokeRoundedUserGroup,
           width: screenWidth(context) > 1200
               ? screenWidth(context) * 0.25
@@ -155,7 +155,7 @@ class LoginView extends StatelessWidget {
           controller: controller.fullNameController,
         ),
         CustomTextField(
-          hintText: 'Email',
+          hintText: 'email'.tr,
           prefixIcon: HugeIcons.strokeRoundedMail01,
           width: screenWidth(context) > 1200
               ? screenWidth(context) * 0.25
@@ -163,7 +163,7 @@ class LoginView extends StatelessWidget {
           controller: controller.emailController,
         ),
         CustomTextField(
-          hintText: 'Password',
+          hintText: 'password'.tr,
           prefixIcon: HugeIcons.strokeRoundedLockComputer,
           isPassword: true,
           obscureText: true,
@@ -173,7 +173,7 @@ class LoginView extends StatelessWidget {
           controller: controller.registerPasswordController,
         ),
         CustomTextField(
-          hintText: 'Confirm Password',
+          hintText: 'confirmPassword'.tr,
           prefixIcon: HugeIcons.strokeRoundedLockComputer,
           isPassword: true,
           obscureText: true,
@@ -184,7 +184,7 @@ class LoginView extends StatelessWidget {
         ),
         (screenHeight(context) * 0.04).sh,
         CustomButton(
-          text: 'Register',
+          text: 'register'.tr,
           onTap: () {
           },
           width: screenWidth(context) > 1200

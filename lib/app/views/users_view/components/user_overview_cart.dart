@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_common/get_reset.dart';
 import 'package:spera_admin_panel/app/model/user_model.dart';
 
 import '../../../../utils/colors.dart';
@@ -68,7 +70,7 @@ class UserOverviewCart extends StatelessWidget {
             flex: 10,
           ),
           Text(
-            '${user.age} points',
+            "${user.age} ${'points'.tr}",
             style: AppTextStyles.textStyle19.copyWith(
                 color: AppColors.blackColor, fontWeight: FontWeight.bold),
           ),

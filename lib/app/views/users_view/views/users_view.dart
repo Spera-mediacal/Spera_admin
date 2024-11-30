@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:spera_admin_panel/app/model/user_model.dart';
 import 'package:spera_admin_panel/app/views/users_view/components/user_overview_cart.dart';
 import 'package:spera_admin_panel/utils/text_styles.dart';
@@ -25,16 +26,16 @@ class UsersView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CustomAppBar(
-            title: 'Users',
+           CustomAppBar(
+            title: 'users'.tr,
           ),
           Text(
-            '5000 Users found',
+            "${500} ${'usersFound'.tr}",
             style: AppTextStyles.textStyle24,
           ),
           (screenHeight(context) * 0.04).sh,
           Text(
-            'All Users',
+            'allUsers'.tr,
             style: AppTextStyles.textStyle35
                 .copyWith(fontWeight: FontWeight.bold),
           ),
@@ -53,7 +54,7 @@ class UsersView extends StatelessWidget {
                 flex: 9,
               ),
               Text(
-                'Name',
+                'name'.tr,
                 style: AppTextStyles.textStyle24
                     .copyWith(fontWeight: FontWeight.bold),
               ),
@@ -61,7 +62,7 @@ class UsersView extends StatelessWidget {
                 flex: 9,
               ),
               Text(
-                'Phone',
+                'phone'.tr,
                 style: AppTextStyles.textStyle24
                     .copyWith(fontWeight: FontWeight.bold),
               ),
@@ -69,7 +70,7 @@ class UsersView extends StatelessWidget {
                 flex: 8,
               ),
               Text(
-                'Blood',
+                'blood'.tr,
                 style: AppTextStyles.textStyle24
                     .copyWith(fontWeight: FontWeight.bold),
               ),
@@ -77,7 +78,7 @@ class UsersView extends StatelessWidget {
                 flex: 9,
               ),
               Text(
-                'Age',
+                'age'.tr,
                 style: AppTextStyles.textStyle24
                     .copyWith(fontWeight: FontWeight.bold),
               ),
@@ -85,7 +86,7 @@ class UsersView extends StatelessWidget {
                 flex: 9,
               ),
               Text(
-                'Height',
+                'height'.tr,
                 style: AppTextStyles.textStyle24
                     .copyWith(fontWeight: FontWeight.bold),
               ),
@@ -100,10 +101,10 @@ class UsersView extends StatelessWidget {
               itemCount: 10,
               itemBuilder: (context, index) => UserOverviewCart(
                 user: User(
-                  fullName: 'fullName',
+                  fullName: 'Full Name',
                   id: 'id',
-                  phoneNumber: 'phoneNumber',
-                  bloodType: 'bloodType',
+                  phoneNumber: 'Phone Number',
+                  bloodType: 'Blood Type',
                   weight: 100,
                   height: 100,
                   age: 25,

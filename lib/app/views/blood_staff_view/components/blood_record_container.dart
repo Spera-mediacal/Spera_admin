@@ -25,9 +25,9 @@ class BloodRecordContainer extends StatelessWidget {
       width: screenWidth(context) * 0.2,
       height: screenHeight(context) * 0.2,
       padding: const EdgeInsets.all(20),
-      margin: EdgeInsets.symmetric(horizontal: 4),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8), color: AppColors.accentColor),
+      margin: const EdgeInsets.symmetric(horizontal: 4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -36,10 +36,9 @@ class BloodRecordContainer extends StatelessWidget {
               Icon(
                 icon,
               ),
-
               Text(
                 ' $title',
-                style: AppTextStyles.textStyle24
+                style: AppTextStyles.textStyle19
                     .copyWith(color: AppColors.blackColor),
               ),
             ],
@@ -70,7 +69,12 @@ class BloodRecordContainer extends StatelessWidget {
                         color: AppColors.accentColor,
                       ),
                     ),
-                    Icon(percent>20? HugeIcons.strokeRoundedArrowUpRight01  : HugeIcons.strokeRoundedArrowDownRight01, color: AppColors.accentColor,)
+                    Icon(
+                      percent > 20
+                          ? HugeIcons.strokeRoundedArrowUpRight01
+                          : HugeIcons.strokeRoundedArrowDownRight01,
+                      color: AppColors.accentColor,
+                    )
                   ],
                 ),
               )

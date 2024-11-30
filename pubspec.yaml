@@ -43,6 +43,7 @@ dependencies:
   percent_indicator: ^4.2.4
   image_picker: ^1.1.2
   pretty_qr_code: ^3.0.0
+  shared_preferences:
 
 
 dev_dependencies:

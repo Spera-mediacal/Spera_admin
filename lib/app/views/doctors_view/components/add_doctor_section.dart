@@ -56,14 +56,14 @@ class AddDoctorSection extends StatelessWidget {
             (screenWidth(context) * 0.02).sw,
             Expanded(
               child: CustomTextField(
-                hintText: 'Name',
+                hintText: 'name'.tr,
                 controller: controller.nameController,
               ),
             ),
             (screenWidth(context) * 0.02).sw,
             Expanded(
               child: CustomTextField(
-                hintText: 'Phone',
+                hintText: 'phone'.tr,
                 controller: controller.phoneController,
                 keyboardType: TextInputType.phone,
               ),
@@ -75,21 +75,21 @@ class AddDoctorSection extends StatelessWidget {
           children: [
             Expanded(
               child: CustomTextField(
-                hintText: 'Address',
+                hintText: 'address'.tr,
                 controller: controller.addressController,
               ),
             ),
             (screenWidth(context) * 0.02).sw,
             Expanded(
               child: CustomTextField(
-                hintText: 'Specialization',
+                hintText: 'specialization'.tr,
                 controller: controller.specializationController,
               ),
             ),
             (screenWidth(context) * 0.02).sw,
             Expanded(
               child: CustomTextField(
-                hintText: 'Rate',
+                hintText: 'rate'.tr,
                 controller: controller.rateController,
                 keyboardType: TextInputType.number,
               ),
@@ -103,21 +103,21 @@ class AddDoctorSection extends StatelessWidget {
               onPressed: () => controller.pickTime(context, true),
               icon: const Icon(Icons.access_time),
               label: Obx(() => Text(controller.startHour.value.isEmpty
-                  ? 'Start Hour'
+                  ? 'startHour'.tr
                   : controller.startHour.value)),
             ),
             TextButton.icon(
               onPressed: () => controller.pickTime(context, false),
               icon: const Icon(Icons.access_time),
               label: Obx(() => Text(controller.endHour.value.isEmpty
-                  ? 'End Hour'
+                  ? 'endHour'.tr
                   : controller.endHour.value)),
             ),
             TextButton.icon(
               onPressed: () => controller.pickDate(context),
               icon: const Icon(Icons.calendar_today),
               label: Obx(() => Text(controller.joinDate.value.isEmpty
-                  ? 'Join Date'
+                  ? 'joinDate'.tr
                   : controller.joinDate.value)),
             ),
           ],
@@ -152,7 +152,7 @@ class AddDoctorSection extends StatelessWidget {
               }).toList(),
             ),
             CustomButton(
-              text: 'Add Doctor',
+              text: 'addDoctor'.tr,
               onTap: controller.addDoctor,
               width: screenWidth(context) * 0.13,
               height: screenHeight(context) * 0.03,

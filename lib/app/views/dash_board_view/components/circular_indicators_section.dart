@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:spera_admin_panel/app/views/dash_board_view/components/progress_item.dart';
 
 class CircularIndicatorsSection extends StatelessWidget {
@@ -8,17 +9,17 @@ class CircularIndicatorsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return  Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         ProgressItem(
-          footer: 'Users Between 18 and 25',
+          footer: 'usersBetween18And25'.tr,
           percentage: 15,
         ), ProgressItem(
-          footer: 'Users Between 25 and 50',
+          footer: 'usersBetween25And50'.tr,
           percentage: 80,
         ), ProgressItem(
-          footer: 'Users Above 50',
+          footer: 'usersAbove50'.tr,
           percentage: 5,
         ),
       ],

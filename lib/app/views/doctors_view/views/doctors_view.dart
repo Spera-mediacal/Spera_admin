@@ -30,7 +30,7 @@ class DoctorsView extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            const CustomAppBar(title: 'Doctors'),
+             CustomAppBar(title: 'doctors'.tr),
             AddDoctorSection(controller: controller),
             (screenHeight(context) * 0.02).sh,
             Obx(() {
@@ -63,32 +63,41 @@ class DoctorsView extends StatelessWidget {
                                         .copyWith(color: AppColors.accentColor),
                                   ),
                                   Text(
-                                    'Name: ${doctor.name}',
+                                    '${'name'.tr}: ${doctor.name}',
                                     style: AppTextStyles.textStyle19
                                         .copyWith(color: AppColors.accentColor),
                                   ),
                                   Text(
-                                    'Phone: ${doctor.phone}',
+                                    '${'phone'.tr}: ${doctor.phone}',
                                     style: AppTextStyles.textStyle19
                                         .copyWith(color: AppColors.accentColor),
                                   ),
                                   Text(
-                                    'Address: ${doctor.address}',
+                                    '${'address'.tr}: ${doctor.address}',
                                     style: AppTextStyles.textStyle19
                                         .copyWith(color: AppColors.accentColor),
                                   ),
                                   Text(
-                                    'Specialization: ${doctor.specialization}',
+                                    '${'Specialization'.tr}: ${doctor.specialization}',
                                     style: AppTextStyles.textStyle19
                                         .copyWith(color: AppColors.accentColor),
                                   ),
                                   Text(
-                                    'Rate: ${doctor.rate}',
+                                    '${'rate'.tr}: ${doctor.rate}',
                                     style: AppTextStyles.textStyle19
                                         .copyWith(color: AppColors.accentColor),
                                   ),
                                   Text(
-                                    'Working Days: ${doctor.workDays.join(', ')}',
+                                    '${'workingDays'.tr}: ${doctor.workDays.join(', ')}',
+                                    style: AppTextStyles.textStyle19
+                                        .copyWith(color: AppColors.accentColor),
+                                  ),
+                                  Text(
+                                    '${'from'.tr}: ${doctor.startHour}',
+                                    style: AppTextStyles.textStyle19
+                                        .copyWith(color: AppColors.accentColor),
+                                  ),Text(
+                                    '${'to'.tr}: ${doctor.endHour}',
                                     style: AppTextStyles.textStyle19
                                         .copyWith(color: AppColors.accentColor),
                                   ),
