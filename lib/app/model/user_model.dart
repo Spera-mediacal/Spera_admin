@@ -1,38 +1,31 @@
-
 class User {
-  final String fullName;
   final String id;
-  final String phoneNumber;
+  final String name;
+  final String phone;
   final String bloodType;
   final int weight;
   final int height;
   final int age;
 
   User({
-    required this.fullName,
     required this.id,
-    required this.phoneNumber,
+    required this.name,
+    required this.phone,
     required this.bloodType,
     required this.weight,
     required this.height,
     required this.age,
   });
 
-  double calculateBMI() {
-    double heightInMeters = height / 100;
-    return weight / (heightInMeters * heightInMeters);
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      "id": id,
-      "name": fullName,
-      "phone": phoneNumber,
-      "bloodType": bloodType,
-      "weight": weight,
-      "hight": height,
-      "bmi": calculateBMI(),
-      "age": age,
-    };
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      phone: json['phone'] as String,
+      bloodType: json['bloodType'] as String,
+      weight: json['weight'] as int,
+      height: json['hight'] as int, // Note: "hight" typo in API
+      age: json['age'] as int,
+    );
   }
 }

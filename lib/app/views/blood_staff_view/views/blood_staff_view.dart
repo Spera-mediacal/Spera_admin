@@ -32,40 +32,40 @@ class BloodStaffView extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-             CustomAppBar(title: 'bloodStaff'.tr),
-             Row(
+            CustomAppBar(title: 'bloodStaff'.tr),
+            Row(
               children: [
                 Expanded(
-                  child: BloodRecordContainer(
+                  child: Obx(() => BloodRecordContainer(
                     icon: HugeIcons.strokeRoundedEye,
                     percent: 20,
                     title: 'yearlyDonations'.tr,
-                    value: 20,
-                  ),
+                    value: controller.yearlyDonations.value,
+                  )),
                 ),
                 Expanded(
-                  child: BloodRecordContainer(
+                  child: Obx(() => BloodRecordContainer(
                     icon: HugeIcons.strokeRoundedEye,
                     percent: 20,
                     title: 'monthlyDonations'.tr,
-                    value: 20,
-                  ),
+                    value: controller.monthlyDonations.value,
+                  )),
                 ),
                 Expanded(
-                  child: BloodRecordContainer(
+                  child: Obx(() => BloodRecordContainer(
                     icon: HugeIcons.strokeRoundedEye,
                     percent: 20,
                     title: 'weeklyDonations'.tr,
-                    value: 20,
-                  ),
+                    value: controller.weeklyDonations.value,
+                  )),
                 ),
                 Expanded(
-                  child: BloodRecordContainer(
+                  child: Obx(() => BloodRecordContainer(
                     icon: HugeIcons.strokeRoundedEye,
                     percent: 20,
                     title: 'dailyDonations'.tr,
-                    value: 20,
-                  ),
+                    value: controller.dailyDonations.value,
+                  )),
                 ),
               ],
             ),
@@ -73,9 +73,19 @@ class BloodStaffView extends StatelessWidget {
             Row(
               children: [
                 SizedBox(
-                  height: screenHeight(context) * 0.6,
+                  height: screenHeight(context) * 0.7,
                   width: screenWidth(context) * 0.45,
-                  child: const BloodLinesChart(),
+                  //each quantity of blood type
+                  child: const BloodLinesChart(
+                    aPos: 3,
+                    aNeg: 6,
+                    bPos: 7,
+                    bNeg: 9,
+                    oPos: 10,
+                    oNeg: 5,
+                    abPos: 15,
+                    abNeg: 18,
+                  ),
                 ),
                 const Spacer(),
                 Column(
@@ -100,7 +110,8 @@ class BloodStaffView extends StatelessWidget {
                               decoration: const PrettyQrDecoration(
                                 shape: PrettyQrRoundedSymbol(
                                     color: AppColors.accentColor,
-                                    borderRadius: BorderRadius.all(Radius.zero)),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.zero)),
                                 background: AppColors.blackColor,
                                 image: PrettyQrDecorationImage(
                                   image: AssetImage('assets/media/logo.png'),

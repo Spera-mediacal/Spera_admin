@@ -18,8 +18,8 @@ class SideNavController extends GetxController {
   ];
 
   final List<Widget> pageViews = [
-    const DashboardView(),
-    const UsersView(),
+     DashboardView(),
+     UsersView(),
     DoctorsView(),
     BloodStaffView(),
     const SettingsView()

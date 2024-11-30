@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_common/get_reset.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:spera_admin_panel/app/controller/doctor_controller.dart';
+import 'package:spera_admin_panel/app/controller/user_controller.dart';
 import 'package:spera_admin_panel/utils/colors.dart';
 import 'package:spera_admin_panel/utils/size_config.dart';
 
@@ -12,8 +14,9 @@ import '../components/summary_card.dart';
 import '../components/wave_chart.dart';
 
 class DashboardView extends StatelessWidget {
-  const DashboardView({super.key});
-
+   DashboardView({super.key});
+  final UserController userController = Get.put(UserController());
+  final DoctorController doctorController = Get.put(DoctorController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,7 +36,7 @@ class DashboardView extends StatelessWidget {
             CustomAppBar(
               title: 'dashboard'.tr,
             ),
-            const CircularIndicatorsSection(),
+             CircularIndicatorsSection(),
             (screenHeight(context) * 0.02).sh,
              Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -41,26 +44,26 @@ class DashboardView extends StatelessWidget {
                 SummaryCard(
                   icon: HugeIcons.strokeRoundedArrowExpand,
                   title: 'totalUsers'.tr,
-                  subTitle: '25.1K',
-                  incoming: 20,
+                  subTitle: '${userController.users.length}',
+                  incoming: 7,
                 ),
                 SummaryCard(
                   icon: HugeIcons.strokeRoundedArrowExpand,
                   title: 'TotalDoctors'.tr,
-                  subTitle: '25.1K',
-                  incoming: 20,
+                  subTitle: '${doctorController.doctorsList.length}',
+                  incoming: 5,
                 ),
                 SummaryCard(
                   icon: HugeIcons.strokeRoundedArrowExpand,
                   title: 'TotalStations'.tr,
                   subTitle: '25.1K',
-                  incoming: 20,
+                  incoming: 3,
                 ),
                 SummaryCard(
                   icon: HugeIcons.strokeRoundedArrowExpand,
                   title: 'newUsers'.tr,
-                  subTitle: '25.1K',
-                  incoming: 20,
+                  subTitle: '${userController.users.length-(userController.users.length-3)}',
+                  incoming: 4,
                 ),
               ],
             ),
@@ -71,7 +74,7 @@ class DashboardView extends StatelessWidget {
                   bottomData: const ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu'],
                   spots: const [
                     FlSpot(0, 6), // Saturday
-                    FlSpot(1, 4), // Sunday
+                    FlSpot(1, 0), // Sunday
                     FlSpot(2, 8), // Monday
                     FlSpot(3, 10), // Tuesday
                     FlSpot(4, 2), // Wednesday

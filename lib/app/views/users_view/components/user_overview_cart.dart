@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_common/get_reset.dart';
 import 'package:spera_admin_panel/app/model/user_model.dart';
 
 import '../../../../utils/colors.dart';
@@ -43,7 +42,7 @@ class UserOverviewCart extends StatelessWidget {
           SizedBox(
             width: 140,
             child: Text(
-              user.fullName,
+              user.name,
               style: AppTextStyles.textStyle19.copyWith(
                   overflow: TextOverflow.ellipsis,
                   color: AppColors.blackColor,
@@ -54,7 +53,7 @@ class UserOverviewCart extends StatelessWidget {
             flex: 7,
           ),
           Text(
-            user.phoneNumber,
+            user.phone,
             style: AppTextStyles.textStyle19.copyWith(
                 color: AppColors.blackColor, fontWeight: FontWeight.w400),
           ),

@@ -33,19 +33,19 @@ class SettingsView extends StatelessWidget {
             const SizedBox(height: 20),
             // Language Picker
             Obx(
-                  () => DropdownButton<String>(
+              () => DropdownButton<String>(
                 value: controller.selectedLanguage.value,
                 dropdownColor: AppColors.blackColor,
                 items: controller.languages
                     .map(
                       (lang) => DropdownMenuItem<String>(
-                    value: lang,
-                    child: Text(
-                      lang.tr,
-                      style: const TextStyle(color: AppColors.whiteColor),
-                    ),
-                  ),
-                )
+                        value: lang,
+                        child: Text(
+                          lang.tr,
+                          style: const TextStyle(color: AppColors.whiteColor),
+                        ),
+                      ),
+                    )
                     .toList(),
                 onChanged: (value) {
                   if (value != null) {
@@ -57,13 +57,13 @@ class SettingsView extends StatelessWidget {
             const SizedBox(height: 20),
 
             // App Information Section
-             Text(
+            Text(
               "applicationInfo".tr,
               style: const TextStyle(color: AppColors.whiteColor, fontSize: 18),
             ),
             const SizedBox(height: 10),
             ListTile(
-              title:  Text(
+              title: Text(
                 "facebook".tr,
                 style: const TextStyle(color: AppColors.whiteColor),
               ),
@@ -75,7 +75,7 @@ class SettingsView extends StatelessWidget {
               ),
             ),
             ListTile(
-              title:  Text(
+              title: Text(
                 "website".tr,
                 style: const TextStyle(color: AppColors.whiteColor),
               ),
@@ -95,7 +95,7 @@ class SettingsView extends StatelessWidget {
             const SizedBox(height: 20),
 
             // Create Station Section
-             Text(
+            Text(
               "createStation".tr,
               style: const TextStyle(color: AppColors.whiteColor, fontSize: 18),
             ),

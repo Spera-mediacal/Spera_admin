@@ -16,8 +16,8 @@ class BloodRecordContainer extends StatelessWidget {
 
   final IconData icon;
   final String title;
-  final double value;
-  final double percent;
+  final int value;
+  final int percent;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,8 @@ class BloodRecordContainer extends StatelessWidget {
                     color: AppColors.blackColor, fontWeight: FontWeight.bold),
               ),
               Container(
-                width: screenWidth(context) * 0.04,
+                //width: screenWidth(context) * 0.04,
+                padding: const EdgeInsets.all(5),
                 height: screenHeight(context) * 0.03,
                 margin: const EdgeInsets.only(left: 10, bottom: 6),
                 decoration: BoxDecoration(
@@ -64,8 +65,8 @@ class BloodRecordContainer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      percent.round().toString(),
-                      style: AppTextStyles.textStyle19.copyWith(
+                      percent > 20 ? 'Increase' : 'Decrease',
+                      style: AppTextStyles.textStyle15.copyWith(
                         color: AppColors.accentColor,
                       ),
                     ),

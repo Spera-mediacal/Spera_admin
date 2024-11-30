@@ -1,7 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_common/get_reset.dart';
 
 import '../../../../utils/colors.dart';
 import '../../../../utils/size_config.dart';
@@ -10,7 +9,24 @@ import '../../../../utils/text_styles.dart';
 class BloodLinesChart extends StatelessWidget {
   const BloodLinesChart({
     super.key,
+    required this.aPos,
+    required this.aNeg,
+    required this.bPos,
+    required this.bNeg,
+    required this.oPos,
+    required this.oNeg,
+    required this.abPos,
+    required this.abNeg,
   });
+
+  final int aPos;
+  final int aNeg;
+  final int bPos;
+  final int bNeg;
+  final int oPos;
+  final int oNeg;
+  final int abPos;
+  final int abNeg;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +44,16 @@ class BloodLinesChart extends StatelessWidget {
         children: [
           (screenHeight(context) * 0.02).sh,
           const Expanded(
-            child: BloodTypeBarChart(),
+            child: BloodTypeBarChart(
+                aPos: 19,
+                aNeg: 12,
+                bPos: 15,
+                bNeg: 8,
+                oPos: 9,
+                oNeg: 14,
+                abPos: 7,
+                abNeg: 11
+            ),
           ),
         ],
       ),
@@ -37,14 +62,33 @@ class BloodLinesChart extends StatelessWidget {
 }
 
 class BloodTypeBarChart extends StatefulWidget {
-  const BloodTypeBarChart({super.key});
+  const BloodTypeBarChart({
+    super.key,
+    required this.aPos,
+    required this.aNeg,
+    required this.bPos,
+    required this.bNeg,
+    required this.oPos,
+    required this.oNeg,
+    required this.abPos,
+    required this.abNeg,
+  });
+
+  final int aPos;
+  final int aNeg;
+  final int bPos;
+  final int bNeg;
+  final int oPos;
+  final int oNeg;
+  final int abPos;
+  final int abNeg;
 
   @override
   State<StatefulWidget> createState() => BloodTypeBarChartState();
 }
 
 class BloodTypeBarChartState extends State<BloodTypeBarChart> {
-  final Duration animDuration = const Duration(milliseconds: 250);
+  final Duration animDuration = const Duration(seconds: 4);
 
   final List<String> bloodTypes = [
     'A+',
@@ -56,7 +100,24 @@ class BloodTypeBarChartState extends State<BloodTypeBarChart> {
     'AB+',
     'AB-'
   ];
-  final List<double> quantities = [10, 12, 15, 8, 9, 14, 7, 11];
+
+  // Dynamically created quantities list based on widget data
+  late List<double> quantities;
+
+  @override
+  void initState() {
+    super.initState();
+    quantities = [
+      widget.aPos.toDouble(),
+      widget.aNeg.toDouble(),
+      widget.bPos.toDouble(),
+      widget.bNeg.toDouble(),
+      widget.oPos.toDouble(),
+      widget.oNeg.toDouble(),
+      widget.abPos.toDouble(),
+      widget.abNeg.toDouble(),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,14 +130,12 @@ class BloodTypeBarChartState extends State<BloodTypeBarChart> {
             children: <Widget>[
               Text(
                 'yearly'.tr,
-                style: AppTextStyles.textStyle35
-                    .copyWith(color: AppColors.accentColor),
+                style: AppTextStyles.textStyle35.copyWith(color: AppColors.accentColor),
               ),
               (screenHeight(context) * 0.01).sh,
               Text(
                 'bloodTypeDistribution'.tr,
-                style: AppTextStyles.textStyle35
-                    .copyWith(color: AppColors.accentColor),
+                style: AppTextStyles.textStyle35.copyWith(color: AppColors.accentColor),
               ),
               (screenHeight(context) * 0.03).sh,
               Expanded(
@@ -93,13 +152,13 @@ class BloodTypeBarChartState extends State<BloodTypeBarChart> {
   }
 
   BarChartGroupData makeGroupData(
-    int x,
-    double y, {
-    bool isTouched = false,
-    Color? barColor,
-    double width = 22,
-    List<int> showTooltips = const [],
-  }) {
+      int x,
+      double y, {
+        bool isTouched = false,
+        Color? barColor,
+        double width = 22,
+        List<int> showTooltips = const [],
+      }) {
     final gradient = LinearGradient(
       colors: [
         AppColors.accentColor.withOpacity(0.8),
@@ -139,9 +198,7 @@ class BloodTypeBarChartState extends State<BloodTypeBarChart> {
 
   BarChartData mainBarData() {
     return BarChartData(
-      barTouchData: BarTouchData(
-        enabled: true,
-      ),
+      barTouchData: BarTouchData(enabled: true),
       titlesData: FlTitlesData(
         show: true,
         leftTitles: AxisTitles(
@@ -150,8 +207,7 @@ class BloodTypeBarChartState extends State<BloodTypeBarChart> {
             getTitlesWidget: (value, meta) {
               return Text(
                 value.toStringAsFixed(0),
-                style: AppTextStyles.textStyle15
-                    .copyWith(color: AppColors.accentColor),
+                style: AppTextStyles.textStyle15.copyWith(color: AppColors.accentColor),
               );
             },
             interval: 5,
@@ -164,21 +220,15 @@ class BloodTypeBarChartState extends State<BloodTypeBarChart> {
             getTitlesWidget: (value, meta) {
               final index = value.toInt();
               if (index >= 0 && index < bloodTypes.length) {
-                return Text(bloodTypes[index],
-                    style: AppTextStyles.textStyle15
-                        .copyWith(color: AppColors.accentColor));
+                return Text(bloodTypes[index], style: AppTextStyles.textStyle15.copyWith(color: AppColors.accentColor));
               }
               return const SizedBox.shrink();
             },
             reservedSize: 40,
           ),
         ),
-        topTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        rightTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
+        topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+        rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
       ),
       borderData: FlBorderData(show: false),
       barGroups: showingGroups(),

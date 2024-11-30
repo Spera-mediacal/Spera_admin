@@ -9,12 +9,10 @@ import '../../../../utils/text_styles.dart';
 class DoctorCard extends StatelessWidget {
   const DoctorCard({
     super.key,
-
     required this.doctor,
   });
 
   final DoctorModel doctor;
-
 
   @override
   Widget build(BuildContext context) {

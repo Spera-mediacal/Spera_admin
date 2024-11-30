@@ -27,94 +27,177 @@ class DoctorsView extends StatelessWidget {
           left: Radius.circular(20),
         ),
       ),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-             CustomAppBar(title: 'doctors'.tr),
-            AddDoctorSection(controller: controller),
-            (screenHeight(context) * 0.02).sh,
-            Obx(() {
-              return ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: controller.doctors.length,
-                itemBuilder: (context, index) {
-                  final doctor = controller.doctors[index];
-                  return GestureDetector(
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (_) {
-                          return AlertDialog(
-                            backgroundColor: Colors.transparent,
-                            title: const Text('Doctor Details'),
-                            content: GlassContainer(
-                              verticalPadding: 10,
-                              horizontalPadding: 10,
-                              height: screenHeight(context) * 0.6,
-                              width: screenWidth(context) * 0.3,
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'ID: ${doctor.id}',
-                                    style: AppTextStyles.textStyle19
-                                        .copyWith(color: AppColors.accentColor),
+      child: Column(
+        children: [
+          CustomAppBar(title: 'doctors'.tr),
+          AddDoctorSection(controller: controller),
+          (screenHeight(context) * 0.02).sh,
+          Obx(() {
+            return ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: controller.doctorsList.length,
+              itemBuilder: (context, index) {
+                final doctor = controller.doctorsList[index];
+                print(doctor.id);
+                return GestureDetector(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (_) {
+                        return AlertDialog(
+                          backgroundColor: Colors.transparent,
+                          contentPadding: EdgeInsets.zero,
+                          content: GlassContainer(
+                            verticalPadding: 20,
+                            horizontalPadding: 20,
+                            height: screenHeight(context) * 0.5,
+                            width: screenWidth(context) * 0.8,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'doctor_details'.tr,
+                                      style: AppTextStyles.textStyle24.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        color: AppColors.accentColor,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      icon: const Icon(Icons.close,
+                                          color: AppColors.accentColor),
+                                      onPressed: () =>
+                                          Navigator.of(context).pop(),
+                                    ),
+                                  ],
+                                ),
+                                Divider(
+                                    color:
+                                        AppColors.accentColor.withOpacity(0.3)),
+                                Expanded(
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        buildDetailRow(
+                                            'ID', doctor.id.toString()),
+                                        buildDetailRow('name'.tr, doctor.name),
+                                        buildDetailRow(
+                                            'phone'.tr, doctor.phone),
+                                        buildDetailRow(
+                                            'address'.tr, doctor.address),
+                                        buildDetailRow('specialization'.tr,
+                                            doctor.specialization),
+                                        buildDetailRow(
+                                            'rate'.tr, doctor.rate.toString()),
+                                        buildDetailRow('workingDays'.tr,
+                                            doctor.workDays.join(', ')),
+                                        buildDetailRow(
+                                            'from'.tr, doctor.startHour),
+                                        buildDetailRow(
+                                            'to'.tr, doctor.endHour),
+                                      ],
+                                    ),
                                   ),
-                                  Text(
-                                    '${'name'.tr}: ${doctor.name}',
-                                    style: AppTextStyles.textStyle19
-                                        .copyWith(color: AppColors.accentColor),
-                                  ),
-                                  Text(
-                                    '${'phone'.tr}: ${doctor.phone}',
-                                    style: AppTextStyles.textStyle19
-                                        .copyWith(color: AppColors.accentColor),
-                                  ),
-                                  Text(
-                                    '${'address'.tr}: ${doctor.address}',
-                                    style: AppTextStyles.textStyle19
-                                        .copyWith(color: AppColors.accentColor),
-                                  ),
-                                  Text(
-                                    '${'Specialization'.tr}: ${doctor.specialization}',
-                                    style: AppTextStyles.textStyle19
-                                        .copyWith(color: AppColors.accentColor),
-                                  ),
-                                  Text(
-                                    '${'rate'.tr}: ${doctor.rate}',
-                                    style: AppTextStyles.textStyle19
-                                        .copyWith(color: AppColors.accentColor),
-                                  ),
-                                  Text(
-                                    '${'workingDays'.tr}: ${doctor.workDays.join(', ')}',
-                                    style: AppTextStyles.textStyle19
-                                        .copyWith(color: AppColors.accentColor),
-                                  ),
-                                  Text(
-                                    '${'from'.tr}: ${doctor.startHour}',
-                                    style: AppTextStyles.textStyle19
-                                        .copyWith(color: AppColors.accentColor),
-                                  ),Text(
-                                    '${'to'.tr}: ${doctor.endHour}',
-                                    style: AppTextStyles.textStyle19
-                                        .copyWith(color: AppColors.accentColor),
-                                  ),
-                                ],
-                              ),
+                                ),
+                                Divider(
+                                    color:
+                                        AppColors.accentColor.withOpacity(0.3)),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    ElevatedButton.icon(
+                                      icon: const Icon(Icons.delete_outline,
+                                          color: Colors.white),
+                                      label: Text('delete'.tr),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.red,
+                                        foregroundColor: Colors.white,
+                                      ),
+                                      onPressed: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) => AlertDialog(
+                                            title: Text('confirm_deletion'.tr),
+                                            content: Text(
+                                                'delete_doctor_confirm'.tr),
+                                            actions: [
+                                              TextButton(
+                                                child: Text('cancel'.tr),
+                                                onPressed: () =>
+                                                    Navigator.of(context).pop(),
+                                              ),
+                                              ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                  backgroundColor: Colors.red,
+                                                ),
+                                                child: Text(
+                                                  'delete'.tr,
+                                                  style:
+                                                      AppTextStyles.textStyle19,
+                                                ),
+                                                onPressed: () {
+                                                  Get.back();
+                                                  Get.back();
+                                                  controller.deleteDoctor(
+                                                      doctor.id.toString());
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
-                          );
-                        },
-                      );
-                    },
-                    child: DoctorCard(doctor: doctor),
-                  );
-                },
-              );
-            }),
-          ],
-        ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  child: DoctorCard(doctor: doctor),
+                );
+              },
+            );
+          }),
+        ],
+      ),
+    );
+  }
+
+  Widget buildDetailRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            flex: 2,
+            child: Text(
+              '$label:',
+              style: AppTextStyles.textStyle15.copyWith(
+                fontWeight: FontWeight.bold,
+                color: AppColors.accentColor,
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 3,
+            child: Text(
+              value,
+              style: AppTextStyles.textStyle15.copyWith(
+                color: AppColors.accentColor,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

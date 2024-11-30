@@ -153,7 +153,10 @@ class AddDoctorSection extends StatelessWidget {
             ),
             CustomButton(
               text: 'addDoctor'.tr,
-              onTap: controller.addDoctor,
+              onTap: () async {
+                await controller.submitDoctorData();
+                await controller.fetchDoctors();
+              },
               width: screenWidth(context) * 0.13,
               height: screenHeight(context) * 0.03,
               borderRadius: 10,
