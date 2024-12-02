@@ -161,7 +161,7 @@ class LoginView extends StatelessWidget {
         ),
         CustomTextField(
           hintText: 'email'.tr,
-          prefixIcon: HugeIcons.strokeRoundedMail01,
+          prefixIcon: HugeIcons.strokeRoundedUserSharing,
           width: screenWidth(context) > 1200
               ? screenWidth(context) * 0.25
               : screenWidth(context) * 0.7,

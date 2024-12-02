@@ -55,8 +55,6 @@ class SettingsView extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-
-            // App Information Section
             Text(
               "applicationInfo".tr,
               style: const TextStyle(color: AppColors.whiteColor, fontSize: 18),
@@ -64,29 +62,25 @@ class SettingsView extends StatelessWidget {
             const SizedBox(height: 10),
             ListTile(
               title: Text(
-                "facebook".tr,
+                "username".tr,
                 style: const TextStyle(color: AppColors.whiteColor),
               ),
-              trailing: IconButton(
-                icon: const Icon(Icons.facebook, color: AppColors.accentColor),
-                onPressed: () {
-                  // Handle Facebook redirection
-                },
+              trailing: Text(
+               controller.userFullName.value,
+                style: const TextStyle(color: AppColors.accentColor),
               ),
             ),
             ListTile(
               title: Text(
-                "website".tr,
+                "accessToken".tr,
                 style: const TextStyle(color: AppColors.whiteColor),
               ),
-              trailing: IconButton(
-                icon: const Icon(Icons.web, color: AppColors.accentColor),
-                onPressed: () {
-                  // Handle Website redirection
-                },
+              trailing: Text(
+               controller.userAccessToken.value,
+                style: const TextStyle(color: AppColors.accentColor),
               ),
             ),
-            ListTile(
+             ListTile(
               title: Text(
                 "${'version'.tr} 1.0.0",
                 style: const TextStyle(color: AppColors.whiteColor),

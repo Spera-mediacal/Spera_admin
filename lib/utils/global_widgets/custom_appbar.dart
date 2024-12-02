@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:spera_admin_panel/app/controller/admin_controller.dart';
+import 'package:spera_admin_panel/app/controller/blood_staff_controller.dart';
+import 'package:spera_admin_panel/app/controller/doctor_controller.dart';
 import 'package:spera_admin_panel/app/controller/settings_controller.dart';
+import 'package:spera_admin_panel/app/controller/user_controller.dart';
 
+import '../../app/service/shared_pref_helper.dart';
 import '../colors.dart';
 import '../size_config.dart';
 import '../text_styles.dart';
 import 'custom_text_field.dart';
 
 class CustomAppBar extends StatelessWidget {
+  final UserController userController = Get.put(UserController());
+  final DoctorController doctorController = Get.put(DoctorController());
+  final AdminController adminController = Get.put(AdminController());
+  final BloodStaffController bloodStaffController =
+      Get.put(BloodStaffController());
   final SettingsController settingsController = Get.put(SettingsController());
-    CustomAppBar({
+
+  CustomAppBar({
     super.key,
     required this.title,
   });
@@ -39,32 +50,38 @@ class CustomAppBar extends StatelessWidget {
             width: screenWidth(context) * 0.3,
           ),
           const Spacer(flex: 6),
-          const Icon(
-            Icons.notifications,
-            color: AppColors.accentColor,
+          IconButton(
+            onPressed: () async {
+              await SharedPrefHelper.saveFullName(
+                  adminController.fullNameController.text.trim());
+              userController.fetchUsers();
+              doctorController.fetchDoctors();
+              bloodStaffController.fetchDonations();
+              settingsController.fetchStations();
+            },
+            icon: const Icon(
+              Icons.refresh,
+              color: AppColors.accentColor,
+            ),
           ),
           const Spacer(flex: 6),
           const CircleAvatar(
             backgroundColor: AppColors.greyColor,
-            backgroundImage: AssetImage('assets/media/logo.png'),
+            foregroundImage: AssetImage(
+              'assets/media/logo.png',
+            ),
           ),
           const Spacer(
             flex: 1,
           ),
-            Text(
+          Text(
             settingsController.userFullName.value,
             style: AppTextStyles.textStyle19,
           ),
           const Spacer(
             flex: 1,
           ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              HugeIcons.strokeRoundedArrowDown01,
-              color: AppColors.accentColor,
-            ),
-          ),
+
         ],
       ),
     );

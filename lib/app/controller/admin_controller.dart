@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:spera_admin_panel/app/routes/app_routes.dart';
-import 'package:spera_admin_panel/utils/colors.dart';
 
 import '../service/shared_pref_helper.dart';
 
@@ -22,6 +21,12 @@ class AdminController extends GetxController {
 
   // Base URL
   final String baseUrl = "http://127.0.0.1:8000/api/admin";
+
+
+  @override
+  void onInit() {
+    super.onInit();
+   }
 
   // Register Method
   Future<void> register() async {
@@ -116,4 +121,6 @@ class AdminController extends GetxController {
 
     }
   }
+
+
 }
