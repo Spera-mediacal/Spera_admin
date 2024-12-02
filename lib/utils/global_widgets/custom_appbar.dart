@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:spera_admin_panel/app/controller/settings_controller.dart';
 
 import '../colors.dart';
 import '../size_config.dart';
@@ -7,7 +9,8 @@ import '../text_styles.dart';
 import 'custom_text_field.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({
+  final SettingsController settingsController = Get.put(SettingsController());
+    CustomAppBar({
     super.key,
     required this.title,
   });
@@ -17,7 +20,7 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.only(bottom: screenHeight(context) * 0.03),
+      padding: EdgeInsets.only(bottom: screenHeight(context) * 0.03),
       child: Row(
         children: [
           SizedBox(
@@ -42,14 +45,14 @@ class CustomAppBar extends StatelessWidget {
           ),
           const Spacer(flex: 6),
           const CircleAvatar(
-            backgroundImage: NetworkImage(
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa-zrKvWcBozPRvgPMHEm2fAgITc48lVqzSg&s'),
+            backgroundColor: AppColors.greyColor,
+            backgroundImage: AssetImage('assets/media/logo.png'),
           ),
           const Spacer(
             flex: 1,
           ),
-          const Text(
-            'Steven Nullman',
+            Text(
+            settingsController.userFullName.value,
             style: AppTextStyles.textStyle19,
           ),
           const Spacer(
@@ -67,53 +70,3 @@ class CustomAppBar extends StatelessWidget {
     );
   }
 }
-
-/*
-import 'package:flutter/material.dart';
-import 'package:hugeicons/hugeicons.dart';
-
-import '../colors.dart';
-import '../size_config.dart';
-import '../text_styles.dart';
-
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key, required this.title, required this.onTap});
-
-  final String title;
-  final Function() onTap;
-
-  @override
-  Size get preferredSize => const Size.fromHeight(80.0);
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      backgroundColor: Colors.transparent,
-      centerTitle: true,
-      title: Padding(
-        padding: EdgeInsets.only(
-          top: screenHeight(context) * 0.03,
-        ),
-        child: Text(
-          title,
-          style: AppTextStyles.textStyle40,
-        ),
-      ),
-      leading: Padding(
-        padding: EdgeInsets.only(
-          top: screenHeight(context) * 0.02,
-          left: screenWidth(context) * 0.07,
-        ),
-        child: IconButton(
-          onPressed: onTap,
-          icon: const Icon(
-            HugeIcons.strokeRoundedArrowLeft01,
-            size: 30,
-            color: AppColors.accentColor,
-          ),
-        ),
-      ),
-    );
-  }
-}
-*/

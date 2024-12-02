@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_common/get_reset.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:spera_admin_panel/app/controller/doctor_controller.dart';
+import 'package:spera_admin_panel/app/controller/settings_controller.dart';
 import 'package:spera_admin_panel/app/controller/user_controller.dart';
 import 'package:spera_admin_panel/utils/colors.dart';
 import 'package:spera_admin_panel/utils/size_config.dart';
@@ -17,8 +18,11 @@ class DashboardView extends StatelessWidget {
    DashboardView({super.key});
   final UserController userController = Get.put(UserController());
   final DoctorController doctorController = Get.put(DoctorController());
+  final SettingsController settingsController = Get.put(SettingsController());
   @override
   Widget build(BuildContext context) {
+
+
     return Container(
       width: screenWidth(context),
       height: screenHeight(context),
@@ -56,7 +60,7 @@ class DashboardView extends StatelessWidget {
                 SummaryCard(
                   icon: HugeIcons.strokeRoundedArrowExpand,
                   title: 'TotalStations'.tr,
-                  subTitle: '25.1K',
+                  subTitle: '${settingsController.stationsList.length}',
                   incoming: 3,
                 ),
                 SummaryCard(
@@ -82,15 +86,21 @@ class DashboardView extends StatelessWidget {
                   ],
                 ),WaveChart(
                   title: 'doctorsJoining'.tr,
-                  bottomData: const ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June'],
-                  spots: const [
-                    FlSpot(0, 2), // Saturday
-                    FlSpot(1, 4), // Sunday
-                    FlSpot(2, 6), // Monday
-                    FlSpot(3, 8), // Tuesday
-                    FlSpot(4, 2), // Wednesday
-                    FlSpot(5, 10), // Thursday
-                  ],
+                  bottomData: const ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                  spots: () {
+                    final monthlyJoins = doctorController.getMonthlyJoins();
+                    List<FlSpot> spots = [];
+
+                    // The months you want to display
+                    final displayMonths = ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+                    for (int i = 0; i < displayMonths.length; i++) {
+                      final monthValue = monthlyJoins[displayMonths[i]] ?? 0;
+                      spots.add(FlSpot(i.toDouble(), monthValue.toDouble()));
+                    }
+
+                    return spots;
+                  }(),
                 ),
               ],
             )

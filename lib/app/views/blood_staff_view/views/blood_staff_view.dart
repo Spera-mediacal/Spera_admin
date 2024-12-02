@@ -75,24 +75,26 @@ class BloodStaffView extends StatelessWidget {
                 SizedBox(
                   height: screenHeight(context) * 0.7,
                   width: screenWidth(context) * 0.45,
-                  //each quantity of blood type
-                  child: const BloodLinesChart(
-                    aPos: 3,
-                    aNeg: 6,
-                    bPos: 7,
-                    bNeg: 9,
-                    oPos: 10,
-                    oNeg: 5,
-                    abPos: 15,
-                    abNeg: 18,
-                  ),
+                  child: Obx(() {
+
+                    return BloodLinesChart(
+                      aPos: controller.bloodTypeCounts['A+'] ?? 0,
+                      aNeg: controller.bloodTypeCounts['A-'] ?? 0,
+                      bPos: controller.bloodTypeCounts['B+'] ?? 0,
+                      bNeg: controller.bloodTypeCounts['B-'] ?? 0,
+                      oPos: controller.bloodTypeCounts['O+'] ?? 0,
+                      oNeg: controller.bloodTypeCounts['O-'] ?? 0,
+                      abPos: controller.bloodTypeCounts['AB+'] ?? 0,
+                      abNeg: controller.bloodTypeCounts['AB-'] ?? 0,
+                    );
+                  }),
                 ),
                 const Spacer(),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Obx(
-                      () {
+                          () {
                         if (controller.qrData.value == '') {
                           return const Icon(
                             HugeIcons.strokeRoundedQrCode,
@@ -110,8 +112,7 @@ class BloodStaffView extends StatelessWidget {
                               decoration: const PrettyQrDecoration(
                                 shape: PrettyQrRoundedSymbol(
                                     color: AppColors.accentColor,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.zero)),
+                                    borderRadius: BorderRadius.all(Radius.zero)),
                                 background: AppColors.blackColor,
                                 image: PrettyQrDecorationImage(
                                   image: AssetImage('assets/media/logo.png'),
@@ -162,6 +163,7 @@ class BloodStaffView extends StatelessWidget {
                 const Spacer(),
               ],
             ),
+
           ],
         ),
       ),

@@ -23,13 +23,14 @@ class BloodStaffController extends GetxController {
   RxInt weeklyDonations = 0.obs;
   RxInt dailyDonations = 0.obs;
 
+  // Blood type count map
+  RxMap<String, int> bloodTypeCounts = <String, int>{}.obs;
+
   @override
   void onInit() {
     super.onInit();
     fetchDonations();
   }
-
-  // Previous methods remain the same...
 
   Future<void> fetchDonations() async {
     const String url = 'http://${AppConstants.localIp}/api/donate';
@@ -41,6 +42,9 @@ class BloodStaffController extends GetxController {
 
         // Calculate donation counts after fetching
         calculateDonationCounts();
+
+        // Calculate blood type counts
+        calculateBloodTypeCounts();
       } else {
         throw Exception('Failed to load donations');
       }
@@ -78,7 +82,16 @@ class BloodStaffController extends GetxController {
     }).length;
   }
 
-  // Helper method to parse date string (same as before)
+  void calculateBloodTypeCounts() {
+    Map<String, int> typeCounts = {};
+    for (var donation in donations) {
+      typeCounts[donation.bloodType] = (typeCounts[donation.bloodType] ?? 0) + 1;
+    }
+    bloodTypeCounts.value = typeCounts;
+  }
+
+
+  // Helper method to parse date string
   DateTime _parseDate(String dateString) {
     List<String> parts = dateString.split('-');
     return DateTime(
@@ -116,6 +129,4 @@ class BloodStaffController extends GetxController {
     quantity.clear();
     bloodType.clear();
   }
-
 }
-

@@ -43,16 +43,16 @@ class BloodLinesChart extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           (screenHeight(context) * 0.02).sh,
-          const Expanded(
+          Expanded(
             child: BloodTypeBarChart(
-                aPos: 19,
-                aNeg: 12,
-                bPos: 15,
-                bNeg: 8,
-                oPos: 9,
-                oNeg: 14,
-                abPos: 7,
-                abNeg: 11
+                aPos: aPos,
+                aNeg: aNeg,
+                bPos: bPos,
+                bNeg: bNeg,
+                oPos: oPos,
+                oNeg: oNeg,
+                abPos:abPos,
+                abNeg:abNeg,
             ),
           ),
         ],
@@ -88,6 +88,7 @@ class BloodTypeBarChart extends StatefulWidget {
 }
 
 class BloodTypeBarChartState extends State<BloodTypeBarChart> {
+
   final Duration animDuration = const Duration(seconds: 4);
 
   final List<String> bloodTypes = [
@@ -101,7 +102,6 @@ class BloodTypeBarChartState extends State<BloodTypeBarChart> {
     'AB-'
   ];
 
-  // Dynamically created quantities list based on widget data
   late List<double> quantities;
 
   @override
@@ -186,15 +186,6 @@ class BloodTypeBarChartState extends State<BloodTypeBarChart> {
     );
   }
 
-  List<BarChartGroupData> showingGroups() {
-    return List.generate(quantities.length, (i) {
-      return makeGroupData(
-        i,
-        quantities[i],
-        barColor: AppColors.accentColor,
-      );
-    });
-  }
 
   BarChartData mainBarData() {
     return BarChartData(
@@ -210,8 +201,8 @@ class BloodTypeBarChartState extends State<BloodTypeBarChart> {
                 style: AppTextStyles.textStyle15.copyWith(color: AppColors.accentColor),
               );
             },
-            interval: 5,
-            reservedSize: 20,
+            interval: 3,
+            reservedSize: 25,
           ),
         ),
         bottomTitles: AxisTitles(
@@ -231,7 +222,41 @@ class BloodTypeBarChartState extends State<BloodTypeBarChart> {
         rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
       ),
       borderData: FlBorderData(show: false),
-      barGroups: showingGroups(),
+      barGroups: [
+        makeGroupData(
+          0,
+          widget.aPos.toDouble(),
+          barColor: AppColors.accentColor,
+        ),makeGroupData(
+          1,
+          widget.aNeg.toDouble(),
+          barColor: AppColors.accentColor,
+        ),makeGroupData(
+          2,
+          widget.bPos.toDouble(),
+          barColor: AppColors.accentColor,
+        ),makeGroupData(
+          3,
+          widget.bNeg.toDouble(),
+          barColor: AppColors.accentColor,
+        ),makeGroupData(
+          4,
+          widget.oPos.toDouble(),
+          barColor: AppColors.accentColor,
+        ),makeGroupData(
+          5,
+          widget.oNeg.toDouble(),
+          barColor: AppColors.accentColor,
+        ),makeGroupData(
+          6,
+          widget.abPos.toDouble(),
+          barColor: AppColors.accentColor,
+        ), makeGroupData(
+          7,
+          widget.abNeg.toDouble(),
+          barColor: AppColors.accentColor,
+        ),
+      ],
       gridData: const FlGridData(show: false),
     );
   }

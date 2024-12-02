@@ -1,8 +1,13 @@
-class AdminModel {
+class Admin {
   final String name;
   final String username;
-  final String password;
 
-  AdminModel(
-      {required this.name, required this.username, required this.password});
+  Admin({required this.name, required this.username});
+
+  factory Admin.fromJson(Map<String, dynamic> json) {
+    return Admin(
+      name: json['name'],
+      username: json['username'],
+    );
+  }
 }

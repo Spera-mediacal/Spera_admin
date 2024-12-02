@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:spera_admin_panel/utils/constants.dart';
 
 import '../model/doctor_model.dart';
@@ -98,8 +99,13 @@ class DoctorController extends GetxController {
       );
 
       if (response.statusCode == 200) {
-        final responseData = jsonDecode(response.body);
+        jsonDecode(response.body);
         Get.snackbar('Success', 'Doctor added successfully');
+        idController.clear();
+        nameController.clear();
+        phoneController.clear();
+        addressController.clear();
+        specializationController.clear();
       } else {
         Get.snackbar('Error', 'Failed to add doctor');
       }
@@ -163,4 +169,41 @@ class DoctorController extends GetxController {
       selectedDays.add(day);
     }
   }
+
+
+  Map<String, int> getMonthlyJoins() {
+    final Map<String, int> monthlyJoins = {
+      'Jan': 0,
+      'Feb': 0,
+      'Mar': 0,
+      'Apr': 0,
+      'May': 0,
+      'Jun': 0,
+      'Jul': 0,
+      'Aug': 0,
+      'Sep': 0,
+      'Oct': 0,
+      'Nov': 0,
+      'Dec': 0,
+    };
+
+    final dateFormat = DateFormat('d-M-yyyy'); // Custom format for the date
+
+    for (var doctor in doctorsList) {
+      try {
+        final DateTime joinDate = dateFormat.parse(doctor.joinDate);
+        final String monthName = [
+          'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+        ][joinDate.month - 1];
+
+        // Increment the count for the corresponding month
+        monthlyJoins[monthName] = (monthlyJoins[monthName] ?? 0) + 1;
+      } catch (e) {
+        print('Error parsing date: ${doctor.joinDate}');
+      }
+    }
+    return monthlyJoins;
+  }
+
+
 }

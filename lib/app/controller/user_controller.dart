@@ -8,7 +8,6 @@ class UserController extends GetxController {
   var users = <User>[].obs; // Observable list of users
   var isLoading = true.obs; // Loading state
 
-  // Observable variables for age groups
   var firstAgeGroup = 0.obs;   // 18-25 years
   var secondAgeGroup = 0.obs;  // 25-50 years
   var thirdAgeGroup = 0.obs;   // Above 50 years
@@ -32,8 +31,31 @@ class UserController extends GetxController {
         final List<dynamic> userList = response.data['message'];
         users.value = userList.map((json) => User.fromJson(json)).toList();
 
-        // Calculate age groups after fetching users
-        calculateAgeGroups();
+        // Reset age groups
+        thirdAgeGroup.value = 0;
+        secondAgeGroup.value = 0;
+        firstAgeGroup.value = 0;
+
+        int firstGroupCount = 0;
+        int secondGroupCount = 0;
+        int thirdGroupCount = 0;
+        int totalUsers = users.length;
+
+        for (var user in users) {
+          if (user.age >= 18 && user.age <= 25) {
+            firstGroupCount++;
+          } else if (user.age > 25 && user.age <= 50) {
+            secondGroupCount++;
+          } else if (user.age > 50) {
+            thirdGroupCount++;
+          }
+        }
+
+        // Calculate percentages
+        firstAgeGroup.value = ((firstGroupCount / totalUsers) * 100).round();
+        secondAgeGroup.value = ((secondGroupCount / totalUsers) * 100).round();
+        thirdAgeGroup.value = ((thirdGroupCount / totalUsers) * 100).round();
+
       } else {
         Get.snackbar('Error', 'Failed to fetch users');
       }
@@ -44,32 +66,7 @@ class UserController extends GetxController {
     }
   }
 
-  void calculateAgeGroups() {
-    // Reset age group counters
-    firstAgeGroup.value = 0;
-    secondAgeGroup.value = 0;
-    thirdAgeGroup.value = 0;
 
-    // Count users in each age group
-    for (var user in users) {
-      int? age = user.age;
-
-      if (age >= 18 && age <= 25) {
-        firstAgeGroup.value++;
-      } else if (age > 25 && age <= 50) {
-        secondAgeGroup.value++;
-      } else if (age > 50) {
-        thirdAgeGroup.value++;
-      }
-        }
-
-    // Optional: Print out the age group distribution
-    print('18-25 years: ${firstAgeGroup.value}');
-    print('25-50 years: ${secondAgeGroup.value}');
-    print('Above 50 years: ${thirdAgeGroup.value}');
-  }
-
-  // Existing methods remain the same...
   Future<void> deleteUser(String userId) async {
     try {
       final response = await _dio.delete(
@@ -80,7 +77,7 @@ class UserController extends GetxController {
       if (response.statusCode == 200) {
         users.removeWhere((user) => user.id == userId);
         Get.snackbar('Success', 'User deleted successfully');
-        await fetchUsers();  // This will recalculate age groups
+        await fetchUsers();
       } else {
         Get.snackbar('Error', 'Failed to delete user');
       }

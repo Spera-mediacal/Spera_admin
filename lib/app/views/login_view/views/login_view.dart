@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:spera_admin_panel/app/routes/app_routes.dart';
 import 'package:spera_admin_panel/utils/colors.dart';
 import 'package:spera_admin_panel/utils/global_widgets/custom_button.dart';
 import 'package:spera_admin_panel/utils/global_widgets/custom_text_field.dart';
 import 'package:spera_admin_panel/utils/global_widgets/logo_widget.dart';
 import 'package:spera_admin_panel/utils/size_config.dart';
-import '../../../controller/login_controller.dart';
+import '../../../controller/admin_controller.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(LoginController());
+    final controller = Get.put(AdminController());
 
     return Scaffold(
       body: Container(
@@ -105,7 +104,7 @@ class LoginView extends StatelessWidget {
     );
   }
 
-  Widget _buildLoginForm(LoginController controller, BuildContext context) {
+  Widget _buildLoginForm(AdminController controller, BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -115,7 +114,7 @@ class LoginView extends StatelessWidget {
           width: screenWidth(context) > 1200
               ? screenWidth(context) * 0.25
               : screenWidth(context) * 0.7,
-          controller: controller.usernameController,
+          controller: controller.loginUsernameController,
         ),
         CustomTextField(
           hintText: 'password'.tr,
@@ -125,24 +124,30 @@ class LoginView extends StatelessWidget {
           width: screenWidth(context) > 1200
               ? screenWidth(context) * 0.25
               : screenWidth(context) * 0.7,
-          controller: controller.passwordController,
+          controller: controller.loginPasswordController,
         ),
         (screenHeight(context) * 0.04).sh,
-        CustomButton(
-          text: 'login'.tr,
-          onTap: () {
-            Get.offNamed(AppRoutes.sideNavViewPath);
-          },
-          width: screenWidth(context) > 1200
-              ? screenWidth(context) * 0.25
-              : screenWidth(context) * 0.7,
-          height: screenHeight(context) * 0.07,
-        ),
+        Obx(() {
+          return controller.isLoading.value
+              ? const CircularProgressIndicator()
+              : CustomButton(
+            text: 'login'.tr,
+            onTap: () {
+              controller.login();
+            },
+            width: screenWidth(context) > 1200
+                ? screenWidth(context) * 0.25
+                : screenWidth(context) * 0.7,
+            height: screenHeight(context) * 0.07,
+          );
+        }),
+
+
       ],
     );
   }
 
-  Widget _buildRegisterForm(LoginController controller, BuildContext context) {
+  Widget _buildRegisterForm(AdminController controller, BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -160,7 +165,7 @@ class LoginView extends StatelessWidget {
           width: screenWidth(context) > 1200
               ? screenWidth(context) * 0.25
               : screenWidth(context) * 0.7,
-          controller: controller.emailController,
+          controller: controller.usernameController,
         ),
         CustomTextField(
           hintText: 'password'.tr,
@@ -183,15 +188,20 @@ class LoginView extends StatelessWidget {
           controller: controller.confirmPasswordController,
         ),
         (screenHeight(context) * 0.04).sh,
-        CustomButton(
-          text: 'register'.tr,
-          onTap: () {
-          },
-          width: screenWidth(context) > 1200
-              ? screenWidth(context) * 0.25
-              : screenWidth(context) * 0.7,
-          height: screenHeight(context) * 0.07,
-        ),
+        Obx(() {
+          return controller.isLoading.value
+              ? const CircularProgressIndicator()
+              : CustomButton(
+            text: 'register'.tr,
+            onTap: () {
+              controller.register();
+            },
+            width: screenWidth(context) > 1200
+                ? screenWidth(context) * 0.25
+                : screenWidth(context) * 0.7,
+            height: screenHeight(context) * 0.07,
+          );
+        }),
       ],
     );
   }
