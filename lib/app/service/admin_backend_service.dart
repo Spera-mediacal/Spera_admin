@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 
+import '../../utils/constants.dart';
 import '../model/admin_model.dart';
 import '../model/token_model.dart';
 
@@ -8,7 +9,7 @@ import '../model/token_model.dart';
 class ApiService {
   final Dio _dio = Dio(
     BaseOptions(
-      baseUrl: 'http://127.0.0.1:8000/api/admin', // Base URL
+      baseUrl: '${AppConstants.localIp}/api/admin', // Base URL
       headers: {
         'Content-Type': 'application/json',
         'accept': 'application/json',

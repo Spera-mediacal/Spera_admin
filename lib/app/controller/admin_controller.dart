@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:spera_admin_panel/app/routes/app_routes.dart';
+import 'package:spera_admin_panel/utils/constants.dart';
 
 import '../service/shared_pref_helper.dart';
 
@@ -20,7 +21,7 @@ class AdminController extends GetxController {
   var isLoading = false.obs;
 
   // Base URL
-  final String baseUrl = "http://127.0.0.1:8000/api/admin";
+  final String baseUrl = "http://${AppConstants.localIp}/api/admin";
 
 
   @override

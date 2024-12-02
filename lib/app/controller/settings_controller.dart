@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart';
+import '../../utils/constants.dart';
 import '../model/stations_model.dart';
 import '../service/shared_pref_helper.dart';
 
@@ -69,7 +70,7 @@ class SettingsController extends GetxController {
       };
 
       final response = await _dio.post(
-        'http://127.0.0.1:8000/api/station',
+        'http://${AppConstants.localIp}/api/station',
         data: stationData,
         options: Options(
           headers: {
@@ -130,7 +131,7 @@ class SettingsController extends GetxController {
       isStationsLoading.value = true;
 
       final response = await _dio.get(
-        'http://127.0.0.1:8000/api/station',
+        'http://${AppConstants.localIp}/api/station',
         options: Options(
           headers: {
             'accept': 'application/json',
