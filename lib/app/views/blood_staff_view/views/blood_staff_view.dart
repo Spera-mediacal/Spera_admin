@@ -15,7 +15,7 @@ import '../components/blood_type_bar_chart.dart';
 class BloodStaffView extends StatelessWidget {
   BloodStaffView({super.key});
 
-  final BloodStaffController controller = Get.put(BloodStaffController());
+  final DonateController controller = Get.put(DonateController());
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,8 @@ class BloodStaffView extends StatelessWidget {
                 Expanded(
                   child: Obx(() => BloodRecordContainer(
                     icon: HugeIcons.strokeRoundedEye,
-                    percent: 20,
+                    percent: calculatePercentage(
+                        controller.yearlyDonations.value, "year"),
                     title: 'yearlyDonations'.tr,
                     value: controller.yearlyDonations.value,
                   )),
@@ -46,7 +47,8 @@ class BloodStaffView extends StatelessWidget {
                 Expanded(
                   child: Obx(() => BloodRecordContainer(
                     icon: HugeIcons.strokeRoundedEye,
-                    percent: 20,
+                    percent: calculatePercentage(
+                        controller.monthlyDonations.value, "month"),
                     title: 'monthlyDonations'.tr,
                     value: controller.monthlyDonations.value,
                   )),
@@ -54,7 +56,8 @@ class BloodStaffView extends StatelessWidget {
                 Expanded(
                   child: Obx(() => BloodRecordContainer(
                     icon: HugeIcons.strokeRoundedEye,
-                    percent: 20,
+                    percent: calculatePercentage(
+                        controller.weeklyDonations.value, "week"),
                     title: 'weeklyDonations'.tr,
                     value: controller.weeklyDonations.value,
                   )),
@@ -62,21 +65,22 @@ class BloodStaffView extends StatelessWidget {
                 Expanded(
                   child: Obx(() => BloodRecordContainer(
                     icon: HugeIcons.strokeRoundedEye,
-                    percent: 20,
+                    percent: calculatePercentage(
+                        controller.dailyDonations.value, "day"),
                     title: 'dailyDonations'.tr,
                     value: controller.dailyDonations.value,
                   )),
                 ),
               ],
             ),
-            (screenHeight(context) * 0.02).sh,
+            SizedBox(height: screenHeight(context) * 0.02),
             Row(
               children: [
+                // Blood Type Distribution Chart
                 SizedBox(
                   height: screenHeight(context) * 0.7,
                   width: screenWidth(context) * 0.45,
                   child: Obx(() {
-
                     return BloodLinesChart(
                       aPos: controller.bloodTypeCounts['A+'] ?? 0,
                       aNeg: controller.bloodTypeCounts['A-'] ?? 0,
@@ -90,40 +94,39 @@ class BloodStaffView extends StatelessWidget {
                   }),
                 ),
                 const Spacer(),
+                // QR Code and Input Fields
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Obx(
-                          () {
-                        if (controller.qrData.value == '') {
-                          return const Icon(
-                            HugeIcons.strokeRoundedQrCode,
-                            size: 210,
-                            color: AppColors.accentColor,
-                          );
-                        } else {
-                          return Container(
-                            alignment: Alignment.center,
-                            height: screenHeight(context) * 0.18,
-                            width: screenWidth(context) * 0.18,
-                            child: PrettyQrView.data(
-                              data: controller.qrData.value,
-                              errorCorrectLevel: QrErrorCorrectLevel.H,
-                              decoration: const PrettyQrDecoration(
-                                shape: PrettyQrRoundedSymbol(
-                                    color: AppColors.accentColor,
-                                    borderRadius: BorderRadius.all(Radius.zero)),
-                                background: AppColors.blackColor,
-                                image: PrettyQrDecorationImage(
-                                  image: AssetImage('assets/media/logo.png'),
-                                ),
+                    Obx(() {
+                      if (controller.qrData.value == '') {
+                        return const Icon(
+                          HugeIcons.strokeRoundedQrCode,
+                          size: 210,
+                          color: AppColors.accentColor,
+                        );
+                      } else {
+                        return Container(
+                          alignment: Alignment.center,
+                          height: screenHeight(context) * 0.18,
+                          width: screenWidth(context) * 0.18,
+                          child: PrettyQrView.data(
+                            data: controller.qrData.value,
+                            errorCorrectLevel: QrErrorCorrectLevel.H,
+                            decoration: const PrettyQrDecoration(
+                              shape: PrettyQrRoundedSymbol(
+                                  color: AppColors.accentColor,
+                                  borderRadius: BorderRadius.all(Radius.zero)),
+                              background: AppColors.blackColor,
+                              image: PrettyQrDecorationImage(
+                                image: AssetImage('assets/media/logo.png'),
                               ),
                             ),
-                          );
-                        }
-                      },
-                    ),
-                    (screenHeight(context) * 0.02).sh,
+                          ),
+                        );
+                      }
+                    }),
+                    SizedBox(height: screenHeight(context) * 0.02),
                     CustomTextField(
                       hintText: 'stationAddress'.tr,
                       height: screenHeight(context) * 0.02,
@@ -148,7 +151,7 @@ class BloodStaffView extends StatelessWidget {
                       width: screenWidth(context) * 0.2,
                       controller: controller.bloodType,
                     ),
-                    (screenHeight(context) * 0.02).sh,
+                    SizedBox(height: screenHeight(context) * 0.02),
                     CustomButton(
                       text: 'generate'.tr,
                       onTap: () {
@@ -163,10 +166,21 @@ class BloodStaffView extends StatelessWidget {
                 const Spacer(),
               ],
             ),
-
           ],
         ),
       ),
     );
+  }
+
+  int calculatePercentage(int value, String period) {
+    // Adjust the calculation logic as per your requirement
+    int maxValue = period == "year"
+        ? 3650
+        : period == "month"
+        ? 300
+        : period == "week"
+        ? 70
+        : 10; // Example max values
+    return ((value / maxValue) * 100).toInt();
   }
 }

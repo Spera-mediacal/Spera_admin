@@ -17,8 +17,8 @@ class CustomAppBar extends StatelessWidget {
   final UserController userController = Get.put(UserController());
   final DoctorController doctorController = Get.put(DoctorController());
   final AdminController adminController = Get.put(AdminController());
-  final BloodStaffController bloodStaffController =
-      Get.put(BloodStaffController());
+  final DonateController bloodStaffController =
+      Get.put(DonateController());
   final SettingsController settingsController = Get.put(SettingsController());
 
   CustomAppBar({

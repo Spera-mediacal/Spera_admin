@@ -54,7 +54,7 @@ class BloodRecordContainer extends StatelessWidget {
               Container(
                 //width: screenWidth(context) * 0.04,
                 padding: const EdgeInsets.all(5),
-                height: screenHeight(context) * 0.03,
+                height: screenHeight(context) * 0.04,
                 margin: const EdgeInsets.only(left: 10, bottom: 6),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),

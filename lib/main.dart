@@ -2,6 +2,7 @@ import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:spera_admin_panel/app/controller/admin_controller.dart';
+import 'package:spera_admin_panel/app/controller/blood_staff_controller.dart';
 import 'package:spera_admin_panel/app/controller/doctor_controller.dart';
 import 'package:spera_admin_panel/app/controller/settings_controller.dart';
 import 'package:spera_admin_panel/app/routes/app_routes.dart';
@@ -38,10 +39,12 @@ class MyApp extends StatelessWidget {
     final SettingsController settingsController = Get.put(SettingsController());
     final DoctorController doctorController = Get.put(DoctorController());
     final AdminController adminController = Get.put(AdminController());
+    final DonateController donateController = Get.put(DonateController());
     userController.onInit();
     settingsController.onInit();
     doctorController.onInit();
     adminController.onInit();
+    donateController.onInit();
     return GetMaterialApp(
       translations: Languages(),
       locale: Locale(savedLocale == "Arabic" ? 'ar' : 'en'),
